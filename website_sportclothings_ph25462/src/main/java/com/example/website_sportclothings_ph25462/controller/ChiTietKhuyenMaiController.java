@@ -1,8 +1,8 @@
 package com.example.website_sportclothings_ph25462.controller;
 
 import com.example.website_sportclothings_ph25462.entity.ChiTietKhuyenMai;
-import com.example.website_sportclothings_ph25462.entity.ChiTietSP;
 import com.example.website_sportclothings_ph25462.repository.ChiTietKhuyenMaiRepository;
+import com.example.website_sportclothings_ph25462.repository.ChiTietSPRepository;
 import com.example.website_sportclothings_ph25462.repository.ChiTietSanPhamRepository;
 import com.example.website_sportclothings_ph25462.repository.KhuyenMaiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class ChiTietKhuyenMaiController {
     ChiTietKhuyenMaiRepository chiTietKhuyenMaiRepository;
 
     @Autowired
-    ChiTietSanPhamRepository chiTietSanPhamRepository;
+    ChiTietSPRepository chiTietSPRepository;
 
     @Autowired
     KhuyenMaiRepository khuyenMaiRepository;
@@ -27,17 +27,16 @@ public class ChiTietKhuyenMaiController {
     public String hienThi(Model model) {
         model.addAttribute("listKmmct", chiTietKhuyenMaiRepository.findAll());
         model.addAttribute("view", "../chi_tiet_khuyen_mai/index.jsp");
-        model.addAttribute("chiTietSP", chiTietSanPhamRepository.findAll());
-        model.addAttribute("khuyenMai", khuyenMaiRepository.findAll());
+//        model.addAttribute("chiTietSP", null);
+//        model.addAttribute("khuyenMai", khuyenMaiRepository.findAll());
 
         return "/chi_tiet_khuyen_mai/index";
     }
 
     @GetMapping("/chi-tiet-khuyen-mai/hien-thi-add")
     public String hienThiAdd(@ModelAttribute("ctkm") ChiTietKhuyenMai chiTietKhuyenMai, Model model) {
-        model.addAttribute("listKmmct", chiTietKhuyenMaiRepository.findAll());
         model.addAttribute("view", "../chi_tiet_khuyen_mai/index.jsp");
-        model.addAttribute("chiTietSP", chiTietSanPhamRepository.findAll());
+//        model.addAttribute("chiTietSP", chiTietSPRepository.findAll());
         model.addAttribute("khuyenMai", khuyenMaiRepository.findAll());
         model.addAttribute("ctkm", new ChiTietKhuyenMai());
         return "/chi_tiet_khuyen_mai/add";
