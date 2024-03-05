@@ -81,15 +81,31 @@
             <br/>
         </div>
 
-        Sản Phẩm Chi Tiết:
-        <form:select path="chiTietSP">
-            <form:options items="${chiTietSP.sanPham}" itemLabel="ten" />
-        </form:select>
+        <div id="hinhThucGiam">
+            <label class="htg">Hình Thức giảm: </label>
+            <form:radiobutton path="hinhThucGiam" value="0" checked="true" class="radio1"/><span class="sp_next">Giảm theo %</span>
+            <br>
+            <form:radiobutton path="hinhThucGiam" value="1" class="radio"/> <span
+                class="sp_next">Giảm theo thành viên</span>
+            <br/>
+        </div>
+
+        <div class="input">
+            <label>Giá Trị Giảm</label>:
+            <form:input path="giaTriGiam"/>
+            <form:errors path="giaTriGiam" cssStyle="color: red"/>
+            <br/>
+        </div>
+
+<%--        Sản Phẩm Chi Tiết:--%>
+<%--        <form:select path="chiTietSP">--%>
+<%--            <form:options items="${chiTietSP}" itemLabel="ten" itemValue="id"/>--%>
+<%--        </form:select>--%>
 
 
         Khuyến Mại:
         <form:select path="khuyenMai">
-            <form:options items="${khuyenMai}" itemLabel="tenKhuyenMai"/>
+            <form:options items="${khuyenMai}" itemLabel="tenKhuyenMai" itemValue="id"/>
         </form:select><br>
 
         <div class="input">

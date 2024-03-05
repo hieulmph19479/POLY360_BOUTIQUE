@@ -58,6 +58,7 @@
         <th>STT</th>
         <th>ID</th>
         <th>Mã Khuyến Mại Chi Tiết</th>
+        <th>Phần Trăm Giảm</th>
         <th>Chi Tiết Sản Phẩm </th>
         <th>Khuyến Mại</th>
         <th>Ngày bắt Đầu</th>
@@ -71,6 +72,8 @@
             <td>${i.index+1}</td>
             <td>${ctkm.id}</td>
             <td>${ctkm.maChiTietKhuyenMai}</td>
+            <td>${ctkm.hinhThucGiam}</td>
+            <td>${ctkm.giaTriGiam}</td>
             <td>${ctkm.chiTietSP.sanPham.ten}</td>
             <td>${ctkm.khuyenMai.tenKhuyenMai}</td>
             <td>${ctkm.ngayBatDau}</td>
