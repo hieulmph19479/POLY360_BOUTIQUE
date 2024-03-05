@@ -22,6 +22,8 @@
 
 
 <div class="row">
+
+
     <c:forEach items="${hienthi.content}" var="hienthis">
         <div class="col-3 mt-3">
             <div class="card">
@@ -59,6 +61,8 @@
 </nav>
 
 </div>
+
+
 
 <script src="src/main/webapp/js/cart.js"></script>
 </body>

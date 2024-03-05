@@ -46,7 +46,8 @@
     </div>
 
     <div class="right">
-        <div class="pname">T-Shirts for Men</div>
+        <div class="pname">${sanPham.ten}</div>
+
         <div class="ratings">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -61,34 +62,35 @@
         <form id="formThemGioHang" method="post" action="/add-to-cart/${sanPham.id}">
 
 
-        <div class="size">
-            <p class="d-flex align-items-center mb-0 text-dark ft-medium">Màu:</p>
-            <div class="product-color text-left">
-                <c:forEach var="color" items="${listMauSac}" varStatus="colorState">
-                    <div class="form-check form-option form-check-inline mb-1">
-                        <label class="form-option-label rounded-circle" for="color${colorState.index}">
-                            <input type="radio" class="form-check-input" name="mauSac" value="${color.id}" checked="">
-                            <span style="color: ${color.ma}">
-                                    ${color.ten}
-                            </span>
-                        </label>
-                    </div>
-                </c:forEach>
+            <div class="size">
+                <p class="d-flex align-items-center mb-0 text-dark ft-medium">Màu:</p>
+                <div class="product-color text-left">
+                    <c:forEach var="color" items="${listMauSac}" varStatus="colorState">
+                        <div class="form-check form-option form-check-inline mb-1">
+                            <label class="form-option-label rounded-circle" for="color${colorState.index}">
+                                <input type="radio" class="form-check-input" name="mauSac" value="${color.id}"
+                                       checked="">
+                                <span style="color: ${color.ma}">
+                                        ${color.ten}
+                                </span>
+                            </label>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
-        </div>
 
 
-        <div class="size">
-            <p class="d-flex align-items-center mb-0 text-dark ft-medium">Size:</p>
-            <div class="text-left pb-0 pt-2">
-                <c:forEach var="size" items="${listKichCo}" varStatus="sizeState">
-                    <div class="form-check size-option form-option form-check-inline mb-2">
-                        <input class="psize" type="radio" name="size" value="${size.id}" checked="">
-                        <span>${size.ten}</span>
-                    </div>
-                </c:forEach>
+            <div class="size">
+                <p class="d-flex align-items-center mb-0 text-dark ft-medium">Size:</p>
+                <div class="text-left pb-0 pt-2">
+                    <c:forEach var="size" items="${listKichCo}" varStatus="sizeState">
+                        <div class="form-check size-option form-option form-check-inline mb-2">
+                            <input class="psize" type="radio" name="size" value="${size.id}" checked="">
+                            <span>${size.ten}</span>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
-        </div>
             <div class="quantity">
                 <p>Quantity :</p>
                 <input type="number" min="1" max="100" value="1" name="soLuong">

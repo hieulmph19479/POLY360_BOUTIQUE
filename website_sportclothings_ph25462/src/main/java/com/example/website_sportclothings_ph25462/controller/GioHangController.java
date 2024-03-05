@@ -8,6 +8,8 @@ import com.example.website_sportclothings_ph25462.service.ChiTietSanPhamService;
 import com.example.website_sportclothings_ph25462.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,33 +31,34 @@ public class GioHangController {
     HttpSession session;
 
     @PostMapping({"/add-to-cart/{idSanPham}"})
-    public String addToCart(@PathVariable long idSanPham, @RequestParam("mauSac") long idMauSac, @RequestParam("size") long idKichCo) {
+    public String addToCart(@PathVariable long idSanPham, @RequestParam("mauSac") long idMauSac, @RequestParam("size") long idKichCo, @RequestParam("soLuong") Integer soLuong, Model model) {
 
 
         SanPham product = sanPhamService.getById(idSanPham);
         ChiTietSanPham chiTietSanPham = chiTietSanPhamService.getCTSPByIdSanPhamAndIdMauSacAndIdKichCo(idSanPham, idMauSac, idKichCo);
         List<GioHangChiTiet> gioHangChiTietSession = (List<GioHangChiTiet>) session.getAttribute("gioHangCT");
 
-        if(gioHangChiTietSession == null){
+        if (gioHangChiTietSession == null) {
             gioHangChiTietSession = new ArrayList<>();
-            session.setAttribute("gioHangCT",gioHangChiTietSession);
+            session.setAttribute("gioHangCT", gioHangChiTietSession);
         }
         GioHangChiTiet gioHangChiTiet = new GioHangChiTiet();
-        gioHangChiTiet.setSoLuong(1);
+        gioHangChiTiet.setSoLuong(soLuong);
         gioHangChiTiet.setChiTietSanPham(chiTietSanPham);
 
         gioHangChiTietSession.add(gioHangChiTiet);
+        for (GioHangChiTiet gioHangChiTiet1: gioHangChiTietSession
+             ) {
+            System.out.printf("okokzzzzz" + gioHangChiTiet1.getChiTietSanPham().getKichCo().getTen());
+        }
 
-//        for (GioHangChiTiet gioHangChiTiet1:gioHangChiTietSession
-//             ) {
-//            System.out.printf("SLLLLLL "+ gioHangChiTiet1.getSoLuong());
-//            System.out.printf("SPCT   aaaaaa" + gioHangChiTiet1.getChiTietSanPham().getId());
-//
-//        }
 
 
 
 
         return "redirect:/poly360boutique/thuong-hieu-nike";
     }
+
+
+
 }

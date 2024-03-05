@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="../../../css/header.css">
 <%@ page pageEncoding="utf-8" %>
 <header>
@@ -46,9 +47,27 @@
                            style="color: #2D2D2D; margin-right: 20px;margin-left: 20px;font-size: 30px"></i>
                         <div class="dropdown-menu" aria-labelledby="cartIcon" id="cartDropdown">
                             <h3>Giỏ hàng</h3>
-                            <ul id="cartItems"></ul>
+
+                            <c:forEach var="gioHangChiTiet" items="${carts}">
+                                <ul id="cartItems"> <h5> ${gioHangChiTiet.chiTietSanPham.sanPham.ten}</h5></ul>
+                                <ul id="cartItems">${gioHangChiTiet.chiTietSanPham.gia}.đ</ul>
+                                <ul id="cartItems">Màu: ${gioHangChiTiet.chiTietSanPham.mauSac.ten}</ul>
+
+                                <ul id="cartItems">Size: ${gioHangChiTiet.chiTietSanPham.kichCo.ten}</ul>
+                                <ul id="cartItems">Số Lượng: ${gioHangChiTiet.chiTietSanPham.soLuong}</ul>
+
+                            </c:forEach>
+                            <a href="/showCheckout" class="btn buy-btn">Buy Now</a>
+
                         </div>
+
+
                     </div>
+
+
+
+
+
 
                     <%--                    <div class="span8">--%>
                     <%--                        <div class="account pull-right">--%>
