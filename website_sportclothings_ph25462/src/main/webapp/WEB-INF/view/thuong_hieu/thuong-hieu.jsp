@@ -19,6 +19,72 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
     <link rel="icon" href="../../../svg/logohome.svg">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+
+        // thông báo Xác nhận  form add to Card
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var form = document.getElementById("formThemGioHang");
+
+            form.addEventListener("submit", function (event) {
+
+
+                // Kiểm tra các trường cần thiết ở đây (màu sắc, kích thước, số lượng)
+                var selectedColor = document.querySelector('input[name="mauSac"]:checked');
+                var selectedSize = document.querySelector('input[name="size"]:checked');
+                var quantity = document.getElementById("soLuong").value;
+
+
+                // Kiểm tra xem có trường nào bỏ trống không
+                if (!selectedColor || !selectedSize || quantity.trim() === "") {
+                    console.log('Validation failed');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi!',
+                        text: 'Vui Lòng Chọn Màu Sắc Sản Phẩm. ',
+                    });
+                    event.preventDefault(); // Ngăn chặn sự kiện submit
+                } else {
+                    console.log('Validation passed');
+                    event.preventDefault();
+                    // Hiển thị hộp thoại xác nhận
+                    Swal.fire({
+                        icon: 'question',
+                        title: 'Xác nhận',
+                        text: 'Bạn có chắc chắn muốn thêm sản phẩm vào giỏ hàng?',
+                        showCancelButton: true,
+                        confirmButtonText: 'Đồng ý',
+                        cancelButtonText: 'Hủy bỏ',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Người dùng đã xác nhận, có thể submit form
+
+                            // form.submit();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành Công',
+                                text: 'Đã thêm sản phẩm vào giỏ hàng. ',
+                            }).then((result) => {
+                                form.submit().then((result) => {
+                                    window.location.reload();
+                                })
+
+                            });
+
+                        } else {
+                            event.preventDefault(); // Ngăn chặn sự kiện submit nếu người dùng không xác nhận
+                            console.log('Form submission canceled');
+                        }
+                    });
+                }
+            });
+        });
+
+
+    </script>
+
 </head>
 <body>
 <header>
@@ -58,7 +124,6 @@
         <div class="price">${sanPham.gia} .đ</div>
 
 
-
         <form id="formThemGioHang" method="post" action="/add-to-cart/${sanPham.id}">
 
 
@@ -66,14 +131,13 @@
                 <p class="d-flex align-items-center mb-0 text-dark ft-medium">Màu:</p>
                 <div class="product-color text-left">
                     <c:forEach var="color" items="${listMauSac}" varStatus="colorState">
-                        <div class="form-check form-option form-check-inline mb-1">
-                            <label class="form-option-label rounded-circle" for="color${colorState.index}">
-                                <input type="radio" class="form-check-input" name="mauSac" value="${color.id}"
-                                       checked="">
-                                <span style="color: ${color.ma}">
-                                        ${color.ten}
-                                </span>
-                            </label>
+                        <div class="form-check size-option form-option form-check-inline mb-2">
+
+                            <input type="radio" class="form-check-input " id="mauSac" name="mauSac" value="${color.id}">
+                            <span style="color: ${color.ma}">
+                                    ${color.ten}
+                            </span>
+
                         </div>
                     </c:forEach>
                 </div>
@@ -85,7 +149,7 @@
                 <div class="text-left pb-0 pt-2">
                     <c:forEach var="size" items="${listKichCo}" varStatus="sizeState">
                         <div class="form-check size-option form-option form-check-inline mb-2">
-                            <input class="psize" type="radio" name="size" value="${size.id}" checked="">
+                            <input class="psize" type="radio" id="size" name="size" value="${size.id}">
                             <span>${size.ten}</span>
                         </div>
                     </c:forEach>
@@ -93,11 +157,20 @@
             </div>
             <div class="quantity">
                 <p>Quantity :</p>
-                <input type="number" min="1" max="100" value="1" name="soLuong">
+
+                <select class="mb-2 custom-select" id="soLuong" name="soLuong">
+                    <option value="1" selected="">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+
             </div>
             <div class="btn-box">
-                <button type="submit" class="cart-btn">Add to Cart</button>
-                <button type="submit" class="buy-btn">Buy Now</button>
+                <button type="submit" id="addToCard" class="cart-btn">Add to Cart</button>
+                <%--                <button type="button" class="buy-btn">Buy Now</button>--%>
             </div>
 
         </form>

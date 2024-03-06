@@ -54,6 +54,10 @@ public class ThuongHieuController {
     public List<GioHangChiTiet> cartItems() {
         List<GioHangChiTiet> gioHangChiTietList = (List<GioHangChiTiet>) session.getAttribute("gioHangCT");
 
+        if(gioHangChiTietList != null){
+            System.out.printf("số luộng SP gio hang vvvv: " + gioHangChiTietList.size());
+        }
+
         return gioHangChiTietList;
     }
 

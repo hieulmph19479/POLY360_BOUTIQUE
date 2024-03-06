@@ -46,27 +46,29 @@
                         <i id="cartIcon" class="fa-sharp fa-regular fa-cart-shopping"
                            style="color: #2D2D2D; margin-right: 20px;margin-left: 20px;font-size: 30px"></i>
                         <div class="dropdown-menu" aria-labelledby="cartIcon" id="cartDropdown">
-                            <h3>Giỏ hàng</h3>
+                            <h3>Giỏ hàng </h3>
 
                             <c:forEach var="gioHangChiTiet" items="${carts}">
-                                <ul id="cartItems"> <h5> ${gioHangChiTiet.chiTietSanPham.sanPham.ten}</h5></ul>
-                                <ul id="cartItems">${gioHangChiTiet.chiTietSanPham.gia}.đ</ul>
-                                <ul id="cartItems">Màu: ${gioHangChiTiet.chiTietSanPham.mauSac.ten}</ul>
 
-                                <ul id="cartItems">Size: ${gioHangChiTiet.chiTietSanPham.kichCo.ten}</ul>
-                                <ul id="cartItems">Số Lượng: ${gioHangChiTiet.chiTietSanPham.soLuong}</ul>
+                                <ul id="cartItems"><h5> ${gioHangChiTiet.chiTietSanPham.sanPham.ten}</h5></ul>
+
+                                <div class="col">
+                                    <h6><span>Gia: ${gioHangChiTiet.chiTietSanPham.gia}.đ</span></h6>
+                                    <h6><span>Màu: ${gioHangChiTiet.chiTietSanPham.mauSac.ten}</span></h6>
+                                    <h6><span>Size: ${gioHangChiTiet.chiTietSanPham.kichCo.ten}</span></h6>
+                                    <h6><span>Số Lượng: ${gioHangChiTiet.soLuong}</span></h6>
+                                </div>
+
+
 
                             </c:forEach>
                             <a href="/showCheckout" class="btn buy-btn">Buy Now</a>
+                            <a href="/gio-hang" class="btn cart-btn">Chỉnh Sửa</a>
 
                         </div>
 
 
                     </div>
-
-
-
-
 
 
                     <%--                    <div class="span8">--%>
