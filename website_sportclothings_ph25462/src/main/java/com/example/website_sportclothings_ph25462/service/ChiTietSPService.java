@@ -10,4 +10,6 @@ public interface ChiTietSPService {
     List<ChiTietSP> getAll();
 
     void remove(Long id);
+
+    void save(ChiTietSP chiTietSP);
 }

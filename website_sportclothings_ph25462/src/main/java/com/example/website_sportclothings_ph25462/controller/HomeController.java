@@ -24,7 +24,7 @@ public class HomeController {
     private HinhAnhSPService hinhAnhSPService;
 
     @Autowired
-    private ChiTietSanPhamService chiTietSanPhamService;
+    private ChiTietSPService chiTietSPService;
 
     @Autowired
     private TaiKhoanService taiKhoanService;

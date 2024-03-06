@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ChiTietKhuyenMaiServiceImpl implements ChiTietKhuyenMaiService {
@@ -18,5 +19,21 @@ public class ChiTietKhuyenMaiServiceImpl implements ChiTietKhuyenMaiService {
     public List<ChiTietKhuyenMai> getAll() {
 
         return chiTietKhuyenMaiRepository.findAll();
+    }
+
+    @Override
+    public void add(ChiTietKhuyenMai chiTietKhuyenMai) {
+        chiTietKhuyenMaiRepository.save(chiTietKhuyenMai);
+    }
+
+    @Override
+    public ChiTietKhuyenMai update(Long id) {
+        return chiTietKhuyenMaiRepository.findById(id).orElse(null);
+    }
+
+
+    @Override
+    public void remove(Long id) {
+        chiTietKhuyenMaiRepository.deleteById(id);
     }
 }

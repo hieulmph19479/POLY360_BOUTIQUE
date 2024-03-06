@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -40,21 +41,19 @@ public class ChiTietSP {
     @Column(name = "so_luong")
     private Integer soLuong;
 
-//    @Column(name = "gia_hien_hanh")
-//    private Long giaHienHanh;
+    @Column(name = "gia_hien_hanh")
+    private Long giaHienHanh;
 
     @Column(name = "trang_thai")
     private Integer trangThai;
 
-
-
     @Column(name = "ngay_tao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date ngayTao;
+    private LocalDateTime ngayTao;
 
     @Column(name = "ngay_sua")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date ngaySua;
+    private LocalDateTime ngaySua;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
@@ -10,10 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>POLY360BOUTIQUE_ADMIN</title>
     <link rel="icon" href="../../../svg/logohome.svg">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <style>
-    button{
+    button {
         width: 200px;
     }
 
@@ -58,7 +59,9 @@
         <th>STT</th>
         <th>ID</th>
         <th>Mã Khuyến Mại Chi Tiết</th>
-        <th>Chi Tiết Sản Phẩm </th>
+        <th>Hình Thức Giảm</th>
+        <th>Giá Trị Giảm</th>
+        <th>Sản Phẩm</th>
         <th>Khuyến Mại</th>
         <th>Ngày bắt Đầu</th>
         <th>Trạng Thái</th>
@@ -71,6 +74,17 @@
             <td>${i.index+1}</td>
             <td>${ctkm.id}</td>
             <td>${ctkm.maChiTietKhuyenMai}</td>
+            <td>
+                <c:choose>
+                    <c:when test="${ctkm.hinhThucGiam == 1}">
+                        <span class="badges bg-lightyellow">Giảm theo %</span>
+                    </c:when>
+                    <c:when test="${ctkm.hinhThucGiam == 0}">
+                        <span class="badges bg-lightyellow">Giảm theo thành viên</span>
+                    </c:when>
+                </c:choose>
+            </td>
+            <td>${ctkm.giaTriGiam}</td>
             <td>${ctkm.chiTietSP.sanPham.ten}</td>
             <td>${ctkm.khuyenMai.tenKhuyenMai}</td>
             <td>${ctkm.ngayBatDau}</td>
@@ -104,6 +118,8 @@
     <button class="btn btn-primary"><a href="/chi-tiet-khuyen-mai/hien-thi-add" style="text-decoration: none;color: #FFFFFF">ADD</a></button>
     </tbody>
 </table>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 </html>
