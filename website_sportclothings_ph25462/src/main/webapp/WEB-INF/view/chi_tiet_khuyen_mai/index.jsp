@@ -56,22 +56,22 @@
 <table class="table">
     <thead>
     <tr>
-        <th>STT</th>
+
         <th>ID</th>
         <th>Mã Khuyến Mại Chi Tiết</th>
         <th>Hình Thức Giảm</th>
         <th>Giá Trị Giảm</th>
         <th>Sản Phẩm</th>
         <th>Khuyến Mại</th>
-        <th>Ngày bắt Đầu</th>
-        <th>Trạng Thái</th>
+<%--        <th>Ngày bắt Đầu</th>--%>
+
         <th colspan="2">Action</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach items="${listKmmct}" var="ctkm" varStatus="i">
         <tr>
-            <td>${i.index+1}</td>
+
             <td>${ctkm.id}</td>
             <td>${ctkm.maChiTietKhuyenMai}</td>
             <td>
@@ -87,23 +87,8 @@
             <td>${ctkm.giaTriGiam}</td>
             <td>${ctkm.chiTietSP.sanPham.ten}</td>
             <td>${ctkm.khuyenMai.tenKhuyenMai}</td>
-            <td>${ctkm.ngayBatDau}</td>
-            <td>
-                <c:choose>
-                    <c:when test="${ctkm.trangThai == 1}">
-                        <span class="badges bg-lightyellow">Sắp diễn ra</span>
-                    </c:when>
-                    <c:when test="${ctkm.trangThai == 2}">
-                        <span class="badges bg-lightblue">Đang hoạt động</span>
-                    </c:when>
-                    <c:when test="${ctkm.trangThai == 3}">
-                        <span class="badges bg-lightviolet">Ngừng hoạt động</span>
-                    </c:when>
-                    <c:when test="${ctkm.trangThai == 4}">
-                        <span class="badges bg-lightgreen">Hết hạn</span>
-                    </c:when>
-                </c:choose>
-            </td>
+<%--            <td>${ctkm.ngayBatDau}</td>--%>
+
 
             <td>
                 <button class="btn btn-success"><a href="/chi-tiet-khuyen-mai/view-update/${ctkm.id}"

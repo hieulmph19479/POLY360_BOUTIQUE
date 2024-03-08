@@ -84,8 +84,9 @@ public class ChiTietSPController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@ModelAttribute("chitietsp") ChiTietSP chiTietSp, Model model) {
+    public String update(@PathVariable Long id,@ModelAttribute("chitietsp") ChiTietSP chiTietSp, Model model) {
         model.addAttribute("sp",new ChiTietSP());
+        chiTietSp.setId(id);
         repository.save(chiTietSp);
         return "redirect:/chitietsp/hien-thi";
     }

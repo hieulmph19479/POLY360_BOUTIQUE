@@ -40,7 +40,7 @@ public class ChiTietKhuyenMaiController {
     @GetMapping("/chi-tiet-khuyen-mai/hien-thi-add")
     public String hienThiAdd(@ModelAttribute("ctkm") ChiTietKhuyenMai chiTietKhuyenMai, Model model) {
         model.addAttribute("view", "../chi_tiet_khuyen_mai/index.jsp");
-//        model.addAttribute("chiTietSP", chiTietSPRepository.findAll());
+        model.addAttribute("chiTietSP", chiTietSPService.getAll());
         model.addAttribute("khuyenMai", khuyenMaiService.getAll());
         model.addAttribute("ctkm", new ChiTietKhuyenMai());
         return "/chi_tiet_khuyen_mai/add";
@@ -56,21 +56,21 @@ public class ChiTietKhuyenMaiController {
     @GetMapping("/chi-tiet-khuyen-mai/view-update/{id}")
     public String hienThiUPDATE(@PathVariable Long id, Model model) {
         ChiTietKhuyenMai chiTietKhuyenMai = chiTietKhuyenMaiService.update(id);
-//        List<ChiTietSP> chiTietSPList = chiTietSPService.getAll();
+        List<ChiTietSP> chiTietSPList = chiTietSPService.getAll();
         List<KhuyenMai> khuyenMaiList = khuyenMaiService.getAll();
 
-//        model.addAttribute("chiTietSP", chiTietSPList);
+        model.addAttribute("chiTietSP", chiTietSPList);
         model.addAttribute("khuyenMai", khuyenMaiList);
         model.addAttribute("chiTietKhuyenMai", chiTietKhuyenMai);
-        model.addAttribute("ctkm",new ChiTietKhuyenMai());
+        model.addAttribute("ctkm", new ChiTietKhuyenMai());
 
 
         return "/chi_tiet_khuyen_mai/view_update";
     }
 
     @PostMapping("/chi-tiet-khuyen-mai/view-update/{id}")
-    public String update(@PathVariable Long id, @ModelAttribute("chiTietKhuyenMai") ChiTietKhuyenMai chiTietKhuyenMai,Model model) {
-        model.addAttribute("ctkm",new ChiTietKhuyenMai());
+    public String update(@PathVariable Long id, @ModelAttribute("chiTietKhuyenMai") ChiTietKhuyenMai chiTietKhuyenMai, Model model) {
+        model.addAttribute("ctkm", new ChiTietKhuyenMai());
 
         chiTietKhuyenMai.setId(id);
         chiTietKhuyenMaiService.add(chiTietKhuyenMai);

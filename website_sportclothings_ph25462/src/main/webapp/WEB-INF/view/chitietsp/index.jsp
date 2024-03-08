@@ -21,7 +21,8 @@
         <th>ID</th>
         <th>Mã CTSP</th>
         <th>Số lượng</th>
-
+        <th>Giá Gốc</th>
+        <th>Giá Hiện Hành</th>
         <th>Ngày Tạo</th>
         <th>Ngày Sửa</th>
         <th>Sản Phẩm </th>
@@ -38,7 +39,8 @@
             <td>${ctsp.id}</td>
             <td>${ctsp.ma}</td>
             <td>${ctsp.soLuong}</td>
-
+            <td>${ctsp.giaGoc}</td>
+            <td>${ctsp.giaHienHanh}</td>
             <td>${ctsp.ngayTao}</td>
             <td>${ctsp.ngaySua}</td>
             <td>${ctsp.sanPham.ten}</td>

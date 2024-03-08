@@ -59,7 +59,7 @@
         <th>ID</th>
         <th>Mã Khuyến Mại</th>
         <th>Tên Khuyến Mại</th>
-        <th>Giá Trị</th>
+<%--        <th>Giá Trị</th>--%>
         <th>Ngày Tạo</th>
         <th>Ngày Kết Thúc</th>
         <th>Ngày Cập Nhật</th>
@@ -74,7 +74,7 @@
             <td>${km.id}</td>
             <td>${km.maKhuyenMai}</td>
             <td>${km.tenKhuyenMai}</td>
-            <td>${km.giaTri}</td>
+<%--            <td>${km.giaTri}</td>--%>
             <td>${km.ngayTao}</td>
             <td>${km.ngayKetThuc}</td>
             <td>${km.ngayCapNhat}</td>

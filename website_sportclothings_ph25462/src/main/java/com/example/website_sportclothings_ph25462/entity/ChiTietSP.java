@@ -10,9 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,8 +18,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table(name = "chi_tiet_san_pham")
@@ -43,6 +38,9 @@ public class ChiTietSP {
 
     @Column(name = "gia_hien_hanh")
     private Long giaHienHanh;
+
+    @Column(name = "gia_goc")
+    private Long giaGoc;
 
     @Column(name = "trang_thai")
     private Integer trangThai;
