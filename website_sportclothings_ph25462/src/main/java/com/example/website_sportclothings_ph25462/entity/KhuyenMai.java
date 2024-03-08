@@ -24,8 +24,6 @@ public class KhuyenMai {
     private String maKhuyenMai;
     @Column(name = "ten_khuyen_mai")
     private String tenKhuyenMai;
-    @Column(name = "gia_tri")
-    private Float giaTri;
     @Column(name = "ngay_tao")
     private LocalDateTime ngayTao;
     @Column(name = "ngay_ket_thuc")
