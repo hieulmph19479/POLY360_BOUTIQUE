@@ -3,12 +3,10 @@ package com.example.website_sportclothings_ph25462.controller;
 import com.example.website_sportclothings_ph25462.entity.ChiTietKhuyenMai;
 import com.example.website_sportclothings_ph25462.entity.ChiTietSP;
 import com.example.website_sportclothings_ph25462.entity.KhuyenMai;
-import com.example.website_sportclothings_ph25462.entity.Voucher;
 import com.example.website_sportclothings_ph25462.service.ChiTietSPService;
 import com.example.website_sportclothings_ph25462.service.KhuyenMaiService;
 import com.example.website_sportclothings_ph25462.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
