@@ -101,6 +101,19 @@
                 <a class="nav-link-admin" href="/chi-tiet-khuyen-mai/hien-thi">Khuyến Mại Chi Tiết</a>
             </li>
         </div>
+
+        <li class="nav-item" onclick="myThongKe()">
+            <div class="nav-link-admin">Quản lý Thống Kê</div>
+        </li>
+        <div id="myThongKe" style="display: none">
+            <li class="nav-item">
+                <a class="nav-link-admin" href="/thong-ke/hien-thi">Thống Kê</a>
+            </li>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link-admin" href="/chi-tiet-khuyen-mai/hien-thi">Khuyến Mại Chi Tiết</a>--%>
+<%--            </li>--%>
+        </div>
+
         <li class="nav-item">
             <a class="nav-link-admin" href="#">Quản lý đổi trả</a>
         </li>
@@ -125,6 +138,11 @@
     function myKhuyenMai() {
         var khuyenMai = document.getElementById("myKhuyenMai");
         khuyenMai.classList.toggle("show");
+    }
+
+    function myThongKe() {
+        var thongKe = document.getElementById("myThongKe");
+        thongKe.classList.toggle("show");
     }
 </script>
 <style>
