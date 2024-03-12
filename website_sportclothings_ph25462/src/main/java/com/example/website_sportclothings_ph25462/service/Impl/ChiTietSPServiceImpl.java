@@ -13,14 +13,20 @@ import java.util.UUID;
 @Service
 public class ChiTietSPServiceImpl implements ChiTietSPService {
     @Autowired
-    ChiTietSPRepository chiTietSP;
+    ChiTietSPRepository chiTietSPRepository;
     @Override
     public List<ChiTietSP> getAll() {
-        return chiTietSP.findAll();
+        return chiTietSPRepository.findAll();
     }
 
     @Override
     public void remove(Long id) {
-        chiTietSP.deleteById(id);
+        chiTietSPRepository.deleteById(id);
     }
+
+    @Override
+    public void save(ChiTietSP chiTietSP) {
+        chiTietSPRepository.save(chiTietSP);
+    }
+
 }
