@@ -1,5 +1,6 @@
 package com.example.website_sportclothings_ph25462.entity;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -99,9 +100,9 @@ public class HoaDon {
     @JoinColumn(name = "tai_khoan_id")
     private TaiKhoan taiKhoan;
 
+
 //    @ManyToOne
 //    @JoinColumn(name = "phuong_thuc_thanh_toan_id")
 //    private PhuongThucThanhToan phuongThucThanhToan;
-
 
 }

@@ -1,12 +1,17 @@
 package com.example.website_sportclothings_ph25462.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.UUID;
 
 @Table(name = "dia_chi")
 @Entity
@@ -37,10 +42,10 @@ public class DiaChi {
     @JoinColumn(name = "tai_khoan_id")
     private TaiKhoan taiKhoanKH;
 
-    @Column(name="district_id")
+    @Column(name = "district_id")
     private Integer districtID; // mã huyện
 
-    @Column(name="Ward_code")
+    @Column(name = "Ward_code")
     private Integer wardCode; // mã phường xã
 
 

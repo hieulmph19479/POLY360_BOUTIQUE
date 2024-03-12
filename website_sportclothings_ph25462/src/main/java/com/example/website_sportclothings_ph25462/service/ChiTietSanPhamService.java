@@ -9,6 +9,7 @@ public interface ChiTietSanPhamService {
 
     Page<ChiTietSanPham> getData(Integer page);
 
+
     ChiTietSanPham getOne(Long id);
 
     List<ChiTietSanPham> getAll();
@@ -16,4 +17,8 @@ public interface ChiTietSanPhamService {
     List<ChiTietSanPham> getCTSPByIdSanPham(long id);
 
     ChiTietSanPham getCTSPByIdSanPhamAndIdMauSacAndIdKichCo(long idSP, long idMauSac, long idKchCo);
+
+
+
+
 }

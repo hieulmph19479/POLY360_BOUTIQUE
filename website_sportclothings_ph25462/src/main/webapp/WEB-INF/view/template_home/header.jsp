@@ -1,4 +1,6 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link rel="stylesheet" type="text/css" href="../../../css/header.css">
 <%@ page pageEncoding="utf-8" %>
 <header>
@@ -46,6 +48,7 @@
                         <i id="cartIcon" class="fa-sharp fa-regular fa-cart-shopping"
                            style="color: #2D2D2D; margin-right: 20px;margin-left: 20px;font-size: 30px"></i>
                         <div class="dropdown-menu" aria-labelledby="cartIcon" id="cartDropdown">
+
                             <h3>Giỏ hàng </h3>
 
                             <c:forEach var="gioHangChiTiet" items="${carts}">
@@ -69,6 +72,7 @@
 
 
                     </div>
+
 
 
                     <%--                    <div class="span8">--%>

@@ -89,9 +89,20 @@
         <li class="nav-item">
             <a class="nav-link-admin" href="#">Quản lý hóa đơn</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link-admin" href="#">Quản Lý khuyến mãi</a>
+
+
+        <li class="nav-item" onclick="myKhuyenMai()">
+            <div class="nav-link-admin">Quản lý Khuyến Mại</div>
         </li>
+        <div id="myKhuyenMai" style="display: none">
+            <li class="nav-item">
+                <a class="nav-link-admin" href="/khuyen-mai/hien-thi">Khuyến Mại</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link-admin" href="/chi-tiet-khuyen-mai/hien-thi">Khuyến Mại Chi Tiết</a>
+            </li>
+        </div>
+
         <li class="nav-item">
             <a class="nav-link-admin" href="#">Quản lý đổi trả</a>
         </li>
@@ -112,6 +123,13 @@
         var dropDown = document.getElementById("myDropdown");
         dropDown.classList.toggle("show");
     }
+
+
+    function myKhuyenMai() {
+        var khuyenMai = document.getElementById("myKhuyenMai");
+        khuyenMai.classList.toggle("show");
+    }
+
 </script>
 <style>
     .show {

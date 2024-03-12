@@ -1,14 +1,23 @@
 package com.example.website_sportclothings_ph25462.controller;
 
-import com.example.website_sportclothings_ph25462.entity.*;
-import com.example.website_sportclothings_ph25462.service.*;
-//import com.example.website_sportclothings_ph25462.service.ThuongHieuService;
+import com.example.website_sportclothings_ph25462.entity.HinhAnhSP;
+import com.example.website_sportclothings_ph25462.entity.SanPham;
+import com.example.website_sportclothings_ph25462.entity.TaiKhoan;
+import com.example.website_sportclothings_ph25462.service.ChiTietSanPhamService;
+import com.example.website_sportclothings_ph25462.service.HinhAnhSPService;
+import com.example.website_sportclothings_ph25462.service.SanPhamService;
+import com.example.website_sportclothings_ph25462.service.TaiKhoanService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -59,7 +68,10 @@ public class HomeController {
 
 
     @GetMapping("/dang-nhap")
-    public String dangNhap() {
+
+    public String dangNhap(Model model) {
+
+        model.addAttribute("taikhoan", new TaiKhoan());
 
         return ("/login/dangnhap");
     }
@@ -72,16 +84,28 @@ public class HomeController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username,
-                        @RequestParam("password") String password,
-                        HttpSession session) {
-        TaiKhoan taiKhoan = taiKhoanService.checkLogin(username, password);
-        if (taiKhoan != null) {
-            session.setAttribute("taikhoan", taiKhoan);
+    public String login(
+
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+
+            Model model, @ModelAttribute(name = "taikhoan") TaiKhoan taiKhoan,
+            HttpSession session) {
+
+        TaiKhoan taiKhoans = taiKhoanService.checkLogin(username, password);
+
+        if (taiKhoans != null) {
+            session.setAttribute("taikhoanlogin", taiKhoans);
             return "redirect:/poly360boutique/home";
+        } else {
+            session.setAttribute("taikhoanlogin", null);
         }
-        return "redirect:/poly360boutique/dang-nhap";
+
+        model.addAttribute("message", "Ten tai khoan hoac mat khau khong dung");
+
+        return ("/login/dangnhap");
     }
 
 
 }
+

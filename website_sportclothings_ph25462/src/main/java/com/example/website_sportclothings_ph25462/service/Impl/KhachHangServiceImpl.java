@@ -47,4 +47,5 @@ public class KhachHangServiceImpl implements KhachHangService {
     public KhachHang getOneById(Long id) {
         return khr.findById(id).orElse(null);
     }
+
 }

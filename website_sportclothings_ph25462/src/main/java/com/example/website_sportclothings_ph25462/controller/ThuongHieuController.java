@@ -1,5 +1,6 @@
 package com.example.website_sportclothings_ph25462.controller;
 
+
 import com.example.website_sportclothings_ph25462.entity.ChiTietSanPham;
 import com.example.website_sportclothings_ph25462.entity.GioHangChiTiet;
 import com.example.website_sportclothings_ph25462.entity.KichCo;
@@ -20,11 +21,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 
 @Controller
 @RequestMapping("/poly360boutique")
@@ -33,6 +33,7 @@ public class ThuongHieuController {
     ThuongHieuRepository thr;
     @Autowired
     ThuongHieuService thuongHieuService;
+
 
     @Autowired
     SanPhamService sanPhamService;
@@ -43,6 +44,7 @@ public class ThuongHieuController {
     @Autowired
     ChiTietSanPhamService chiTietSanPhamService;
 
+
 //    public Map<Integer, String> getDsTrangThai() {
 //        Map<Integer, String> dsTrangThai = new HashMap<>();
 //        dsTrangThai.put(0, " hoạt động");
@@ -50,16 +52,18 @@ public class ThuongHieuController {
 //        return dsTrangThai;
 //    }
 
+
     @ModelAttribute(name = "carts")
     public List<GioHangChiTiet> cartItems() {
         List<GioHangChiTiet> gioHangChiTietList = (List<GioHangChiTiet>) session.getAttribute("gioHangCT");
 
-        if(gioHangChiTietList != null){
+        if (gioHangChiTietList != null) {
             System.out.printf("số luộng SP gio hang vvvv: " + gioHangChiTietList.size());
         }
 
         return gioHangChiTietList;
     }
+
 
     @GetMapping("/thuong-hieu/hien-thi")
     public String hienThi(Model model) {
@@ -68,6 +72,7 @@ public class ThuongHieuController {
         model.addAttribute("view", "../thuong_hieu/index.jsp");
         return "/thuong_hieu/index";
     }
+
 
     @GetMapping("/thuong-hieu-nike") // chi tiết sản phẩm khi khách hàng nhấn vào sản phẩm
     public String hienThiThuongHieu(Model model) {
@@ -80,7 +85,6 @@ public class ThuongHieuController {
         model.addAttribute("sanPham", sanPham);
         model.addAttribute("listMauSac", mauSacSet);
         model.addAttribute("listKichCo", kichCoSet);
-
 
 
         return "/thuong_hieu/thuong-hieu";

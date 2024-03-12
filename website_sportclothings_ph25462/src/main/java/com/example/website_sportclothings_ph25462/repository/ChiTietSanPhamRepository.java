@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Repository
 public interface ChiTietSanPhamRepository extends JpaRepository<ChiTietSanPham, Long> {
@@ -25,5 +24,6 @@ public interface ChiTietSanPhamRepository extends JpaRepository<ChiTietSanPham, 
             nativeQuery = true
     )
     ChiTietSanPham getAllByIdSanPhamAndIdMauSacAndIdKichCo(@Param("idSP") long idSP, @Param("idMauSac") long idMauSac, @Param("idKichCo") long idKichCo);
+
 
 }

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html lang="en">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
     <link rel="icon" href="../../../svg/logohome.svg">
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
@@ -100,10 +102,17 @@
                 <img class="img-th" src="../../../img/ctsp12.2ao.png" onclick="showImg(this.src)">
             </div>
             <div class="small-img">
+                <<<<<<< HEAD
                 <img class="img-th" src="../../../img/ctsp12.2ao.png" onclick="showImg(this.src)">
             </div>
             <div class="small-img">
                 <img class="img-th" src="../../../img/ctsp12.3ao.png" onclick="showImg(this.src)">
+                =======
+                <img class="img-th" src="../../../img/ctsp12.2ao.png" onclick="showImg(this.src)">
+            </div>
+            <div class="small-img">
+                <img class="img-th" src="../../../img/ctsp12.3ao.png" onclick="showImg(this.src)">
+                >>>>>>> Dung_Test
             </div>
             <div class="small-img">
                 <img class="img-th" src="../../../img/ctsp12.4ao.png" onclick="showImg(this.src)">
@@ -112,7 +121,9 @@
     </div>
 
     <div class="right">
+
         <div class="pname">${sanPham.ten}</div>
+
 
         <div class="ratings">
             <i class="fas fa-star"></i>
@@ -121,6 +132,7 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
         </div>
+
         <div class="price">${sanPham.gia} .đ</div>
 
 
@@ -176,14 +188,6 @@
         </form>
 
 
-        <%--        <div class="size">--%>
-        <%--            <p>Size :</p>--%>
-        <%--            <div class="psize active">M</div>--%>
-        <%--            <div class="psize">L</div>--%>
-        <%--            <div class="psize">XL</div>--%>
-        <%--            <div class="psize">XXL</div>--%>
-        <%--        </div>--%>
-
     </div>
 </div>
 <jsp:include page="../template_home/footer.jsp"/>
@@ -191,8 +195,13 @@
 <script type="text/javascript">
     let bigImg = document.querySelector('.big-img img');
 
+
     function showImg(pic) {
-        bigImg.src = pic;
+
+        function showImg(pic) {
+
+            bigImg.src = pic;
+        }
     }
 
 </script>

@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
@@ -27,14 +26,20 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
+
     public ChiTietSanPham getOne(Long id) {
         return chiTietSanPhamRepository.findById(id).orElse(null);
     }
+//        public ChiTietSanPham getOne (String id){
+//            return chiTietSanPhamRepository.findById(UUID.fromString(id)).orElse(null);
+//
+//        }
 
     @Override
     public List<ChiTietSanPham> getAll() {
         return chiTietSanPhamRepository.findAll();
     }
+
 
     @Override
     public List<ChiTietSanPham> getCTSPByIdSanPham(long id) {
@@ -45,4 +50,5 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     public ChiTietSanPham getCTSPByIdSanPhamAndIdMauSacAndIdKichCo(long idSP, long idMauSac, long idKicCo) {
         return chiTietSanPhamRepository.getAllByIdSanPhamAndIdMauSacAndIdKichCo(idSP, idMauSac, idKicCo);
     }
+
 }
