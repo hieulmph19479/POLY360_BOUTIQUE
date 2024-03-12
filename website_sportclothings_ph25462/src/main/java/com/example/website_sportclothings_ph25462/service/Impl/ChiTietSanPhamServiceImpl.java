@@ -27,8 +27,8 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public ChiTietSanPham getOne(String id) {
-        return chiTietSanPhamRepository.findById(UUID.fromString(id)).orElse(null);
+    public ChiTietSanPham getOne(Long id) {
+        return chiTietSanPhamRepository.findById(id).orElse(null);
     }
 
     @Override

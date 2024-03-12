@@ -43,7 +43,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Lỗi!',
-                        text: 'Vui Lòng Chọn Màu Sắc Sản Phẩm. ',
+                        text: 'Vui Lòng Chọn Màu Sắc, Size Sản Phẩm. ',
                     });
                     event.preventDefault(); // Ngăn chặn sự kiện submit
                 } else {
@@ -134,7 +134,7 @@
                         <div class="form-check size-option form-option form-check-inline mb-2">
 
                             <input type="radio" class="form-check-input " id="mauSac" name="mauSac" value="${color.id}">
-                            <span style="color: ${color.ma}">
+                            <span>
                                     ${color.ten}
                             </span>
 

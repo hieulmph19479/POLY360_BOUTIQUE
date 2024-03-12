@@ -62,7 +62,7 @@
 
 
                             </c:forEach>
-                            <a href="/showCheckout" class="btn buy-btn">Buy Now</a>
+                            <a href="/checkout/show" class="btn buy-btn">Buy Now</a>
                             <a href="/gio-hang" class="btn cart-btn">Chỉnh Sửa</a>
 
                         </div>

@@ -42,4 +42,9 @@ public class KhachHangServiceImpl implements KhachHangService {
     public KhachHang getOne(String maKH) {
         return khr.getSanPhamByMaKH(maKH);
     }
+
+    @Override
+    public KhachHang getOneById(Long id) {
+        return khr.findById(id).orElse(null);
+    }
 }

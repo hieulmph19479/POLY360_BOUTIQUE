@@ -9,7 +9,7 @@ public interface ChiTietSanPhamService {
 
     Page<ChiTietSanPham> getData(Integer page);
 
-    ChiTietSanPham getOne(String id);
+    ChiTietSanPham getOne(Long id);
 
     List<ChiTietSanPham> getAll();
 

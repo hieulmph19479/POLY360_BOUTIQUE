@@ -175,7 +175,7 @@
                 </div>
             </div>
         </div>
-        <form action="#" id="checkoutForm" method="post">
+        <form action="/checkout/process" id="checkoutForm" method="post">
             <div class="row justify-content-between">
                 <div class="col-12 col-lg-7 col-md-12">
                     <!-- Checkout Form -->
@@ -209,7 +209,8 @@
                             <div class="form-group d-flex align-items-center">
                                 <div class="flex-grow-1">
 
-                                    <select name="address" id="idDiaChi" class="form-control" onchange="updateShippingFee(this)">
+                                    <select name="address" id="idDiaChi" class="form-control"
+                                            onchange="updateShippingFee(this)">
                                         <c:forEach var="diaChi" items="${diaChiList}">
                                             <option value="${diaChi.thanhPho}"
                                                     data-districtID="${diaChi.districtID}"
@@ -251,20 +252,26 @@
                     <div class="d-block mb-3">
                         <h4 class="mb-4">Các mặt hàng:</h4>
                         <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x mb-4">
-                            <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <%--                                <h5 class="mb-1" th:text="'Tên Sản Phẩm: '+ ${carts.productName}"></h5>--%>
-                                        <%--                                <p class="mb-1" th:text="'Số lượng: ' + ${carts.quantity}"></p>--%>
-                                        <%--                                <p class="mb-1" th:text="'Kích cỡ: ' + ${carts.productSize}"></p>--%>
-                                        <%--                                <p class="mb-1" th:text="'Màu sắc : ' + ${carts.productColor}"></p>--%>
-                                        <%--                                <p class="mb-1" th:text="'Đơn Giá : ' + ${carts.productPrice} + '.₫'"></p>--%>
+                            <c:forEach var="gioHangCT" items="${carts}">
+                                <li class="list-group-item">
 
+
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h5 class="mb-1">Tên Sản Phẩm: ${gioHangCT.chiTietSanPham.sanPham.ten}</h5>
+                                            <p class="mb-1">Số lượng: ${gioHangCT.soLuong}</p>
+                                            <p class="mb-1">Kích cỡ:  ${gioHangCT.chiTietSanPham.kichCo.ten}</p>
+                                            <p class="mb-1">Màu sắc : ${gioHangCT.chiTietSanPham.mauSac.ten}</p>
+                                            <p class="mb-1">Đơn Giá : ${gioHangCT.chiTietSanPham.gia} .₫</p>
+
+
+                                        </div>
 
                                     </div>
 
-                                </div>
-                            </li>
+
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
 

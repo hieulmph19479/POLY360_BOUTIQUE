@@ -398,7 +398,7 @@ function updateShippingFee(selectElement) {
     var tenKhachHang = selectedOption.getAttribute('data-ten');
     var SDTKhachHang = selectedOption.getAttribute('data-SDT');
     var idSoDiaChi = selectedOption.getAttribute('data-id');
-    
+
 
     $('#hienThiTen').val(tenKhachHang);
     $('#hienThiSDT').val(SDTKhachHang);
