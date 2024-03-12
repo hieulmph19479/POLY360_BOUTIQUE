@@ -22,8 +22,11 @@
 
 
 <div class="row">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Dung_Test
     <c:forEach items="${hienthi.content}" var="hienthis">
         <div class="col-3 mt-3">
             <div class="card">
@@ -50,13 +53,19 @@
         </div>
     </c:forEach>
 </div>
+<<<<<<< HEAD
 <nav aria-label="Page navigation example">
     <ul class="pagination">
+=======
+<%--<nav aria-label="Page navigation example">--%>
+<%--    <ul class="pagination">--%>
+>>>>>>> Dung_Test
 <%--        <c:forEach begin="0" end="${hienthi.totalPages -1}" varStatus="loop">--%>
 <%--            <li class="page-item"><a class="page-link"--%>
 <%--                                     href="/poly360boutique/home?page=${loop.index}">${loop.index+1}</a>--%>
 <%--            </li>--%>
 <%--        </c:forEach>--%>
+<<<<<<< HEAD
     </ul>
 </nav>
 
@@ -64,6 +73,13 @@
 
 
 
+=======
+<%--    </ul>--%>
+<%--</nav>--%>
+
+</div>
+
+>>>>>>> Dung_Test
 <script src="src/main/webapp/js/cart.js"></script>
 </body>
 </html>
