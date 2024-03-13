@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -115,72 +114,81 @@
                 </c:forEach>
             </select>
 
+            <label for="thongKe">Trạng thái :</label>
+            <select id="thongKe" name="trangThai" class="form-control" required>
+                <option value="1" <c:if test="${thongKe.trangThai == 1}">selected</c:if>>Thành Công</option>
+                <option value="2" <c:if test="${thongKe.trangThai == 2}">selected</c:if>>Trờ Xác Nhận</option>
+                <option value="3" <c:if test="${thongKe.trangThai == 3}">selected</c:if>>Đã Xác Nhận</option>
+                <option value="4" <c:if test="${thongKe.trangThai == 4}">selected</c:if>>Đang giao</option>
+                <option value="5" <c:if test="${thongKe.trangThai == 5}">selected</c:if>>Giao Thành Công</option>
+                <option value="0" <c:if test="${thongKe.trangThai == 0}">selected</c:if>>Đã Hủy</option>
+            </select>
+
+
             <button type="submit">Load</button>
         </form>
 
-                <div class="col-lg-3 col-sm-6 col-12 d-flex">
-                    <div class="dash-count">
-                        <div class="dash-counts">
-                            <h4><c:out value="${totalDonHangWithTrangThai}"/></h4>
-                            <h5>Tổng Đơn Hàng</h5>
-                        </div>
-                        <div class="dash-imgs">
-                            <i class="fas fa-shopping-basket ng-binding" style="background: white;padding: 10px;
-                    border-radius: 10px;
-                    color: rgb(12 231 250);"> 0</i>
-                        </div>
-                    </div>
+        <%--        co the dong lai--%>
+        <div class="col-lg-3 col-sm-6 col-12 d-flex">
+            <div class="dash-count">
+                <div class="dash-counts">
+                    <h5>Tổng Đơn Hàng</h5>
                 </div>
-                <div class="col-lg-3 col-sm-6 col-12 d-flex">
-                    <div class="dash-count das1">
-                        <div class="dash-counts">
-                            <h4><c:out value="${totalQuantitySold}"/></h4>
-                            <h5>Tổng sản phẩm</h5>
-                        </div>
-                        <div class="dash-imgs">
-                            <i class="fas fa-wallet ng-binding" style="background: white;padding: 10px;
+                <div class="dash-imgs">
+                    <h4><c:out value="${tongSoLuongHoaDon}"/><i class="fas fa-shopping-basket ng-binding" style="background: white;padding: 10px;
                     border-radius: 10px;
-                    color: rgb(250 145 107);"> </i>
-                        </div>
-                    </div>
+                    color: rgb(12 231 250);"> Hóa Đơn</i></h4>
+
                 </div>
+            </div>
+        </div>
+        <%--        co the dong lai--%>
+<%--        <div class="col-lg-3 col-sm-6 col-12 d-flex">--%>
+<%--            <div class="dash-count das1">--%>
+<%--                <div class="dash-counts">--%>
+<%--                    <h5>Tổng sản phẩm</h5>--%>
+<%--                </div>--%>
+<%--                <div class="dash-imgs">--%>
+<%--                    <h4><c:out value="${tongSoLuong}"/> <i class="fas fa-wallet ng-binding" style="background: white;padding: 10px;--%>
+<%--                    border-radius: 10px;--%>
+<%--                    color: rgb(250 145 107);"> Sản Phẩm</i></h4>--%>
+
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
         <div class="col-lg-3 col-sm-6 col-12 d-flex">
             <div class="dash-count das3">
                 <div class="dash-counts">
+                    <h5>Doanh thu</h5>
                     <h4>
                         <c:if test="${doanhThuNgayThangNam != null}">
-                            <span><c:out value="${doanhThuNgayThangNam}"/> VND</span>
+                            <span><c:out value="${doanhThuNgayThangNam}"/> <i class="fas fa-shopping-basket ng-binding"
+                                                                              style="background: white;padding: 10px;
+                            border-radius: 10px;
+                            color: rgb(12 231 250);"> VND</i></span>
                         </c:if>
                     </h4>
-                    <h5>Doanh thu</h5>
+
                 </div>
-                <div class="dash-imgs">
-                    <i class="fas fa-shopping-basket ng-binding" style="background: white;padding: 10px;
-            border-radius: 10px;
-            color: rgb(12 231 250);"> đ </i>
-                </div>
+
             </div>
         </div>
 
         <!-- script doanh thu cot -->
-        <div class="row" style="width: auto ; height: auto ">
-            <div class="col-lg-7 col-sm-12 col-12 d-flex">
-                <div class="card flex-fill">
-                    <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+        <div class="row">
+            <div class="col-lg-7 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-header pb-0">
                         <h4>Thống kê doanh thu theo tháng</h4>
-
                     </div>
                     <div class="card-body">
-
                         <!-- Thành phần Canvas cho biểu đồ cột -->
                         <canvas id="barChart" width="800" height="400"></canvas>
 
                         <!-- Script để vẽ biểu đồ -->
                         <script th:inline="javascript">
-                            var thongKeDoanhThuTheoThang = /*[[ ${thongKeDoanhThuTheoThang} ]]*/ {};
-
-                            // Chuẩn bị dữ liệu cho biểu đồ
+                            var thongKeDoanhThuTheoThang = /*[[${thongKeDoanhThuTheoThang}]]*/ {};
                             var labels = Object.keys(thongKeDoanhThuTheoThang);
                             var data = Object.values(thongKeDoanhThuTheoThang);
 
@@ -192,7 +200,7 @@
                                     datasets: [{
                                         label: 'Doanh thu',
                                         data: data,
-                                        backgroundColor: ["#FF6384", "#FF6384", "#FF6384", "#FF6384", "#FF6384"]
+                                        backgroundColor: "#d21f1f" // Màu của cột
                                     }]
                                 },
                                 options: {
@@ -204,48 +212,53 @@
                                 }
                             });
                         </script>
+
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="box-shadow-page">
-                <div class="card-body">
-                    <form:form action="/thong-ke/hien-thi" method="get">
-                        <label for="startDate">Ngày Bắt Đầu:</label>
-                        <input type="datetime-local" id="startDate" name="startDate" value="${startDate}" required>
+        <div class="box-shadow-page">
+            <div class="card-body">
+                <form:form action="/thong-ke/hien-thi" method="get">
+                    <label for="startDate">Ngày Bắt Đầu:</label>
+                    <input type="datetime-local" id="startDate" name="startDate" value="${startDate}" required>
 
-                        <label for="endDate">Ngày Kết Thúc:</label>
-                        <input type="datetime-local" id="endDate" name="endDate" value="${endDate}" required>
+                    <label for="endDate">Ngày Kết Thúc:</label>
+                    <input type="datetime-local" id="endDate" name="endDate" value="${endDate}" required>
 
-                        <button type="submit">Tìm kiếm</button>
-                    </form:form>
+                    <button type="submit">Tìm kiếm</button>
+                </form:form>
 
-                    <%--     tim kiem doanh thu theo ngay--%>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Ngày</th>
-                            <th>Số lượng hóa đơn</th>
-                            <th>Số lượng sản phẩm</th>
-                            <th>Tổng doanh thu</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <c:if test="${startDate != null}"> Từ ngày <fmt:formatDate value="${startDate}" pattern="dd/MM/yyyy"/></c:if>
-                                <c:if test="${endDate != null}"> Đến ngày <fmt:formatDate value="${endDate}"
-                                                                                          pattern="dd/MM/yyyy"/></c:if>
-                            </td>
-                            <td><c:out value="${tongSoLuongHoaDon}"/></td>
-                            <td><c:out value="${tongSoLuong}"/></td>
-                            <td><c:if test="${totalIncome != null}"><c:out value="${totalIncome}"/></c:if></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <%--     tim kiem doanh thu theo ngay--%>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Số lượng hóa đơn</th>
+                        <th>Số lượng sản phẩm</th>
+                        <th>Tổng doanh thu</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <c:if test="${startDate != null}"> Từ ngày <fmt:formatDate value="${startDate}"
+                                                                                       pattern="dd/MM/yyyy"/></c:if>
+                            <c:if test="${endDate != null}"> Đến ngày <fmt:formatDate value="${endDate}"
+                                                                                      pattern="dd/MM/yyyy"/></c:if>
+                        </td>
+                        <td><c:out value="${tongSoLuongHoaDon}"/></td>
+                        <td><c:out value="${tongSoLuong}"/></td>
+                        <c:if test="${totalIncome != null}">
+                            <td><c:out value="${totalIncome}"/></td>
+                        </c:if>
+                    </tr>
+                    </tbody>
+                </table>
 
-                </div>
             </div>
         </div>
+    </div>
 </body>
 </html>

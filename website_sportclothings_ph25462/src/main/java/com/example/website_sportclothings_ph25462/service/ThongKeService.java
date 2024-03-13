@@ -8,11 +8,11 @@ import java.util.Map;
 @Service
 public interface ThongKeService {
 
-    Long getRevenue(int day, int month, int year);
+    Long getTongDoanhThuNgayThangNam(int day, int month, int year);
 
     Long getTongSoLuongBanNgayThangNam(LocalDateTime startDate, LocalDateTime endDate);
 
-    Long getTongSoLuongHoaDonBanNgayThangNam(LocalDateTime startDate, LocalDateTime endDate);
+    Long getTongSoLuongHoaDonTheoNgayThangNam(int day, int month, int year,int trangThai);
 
 
     Map<String ,Long> getThongKeDoanhThuTheoThang();

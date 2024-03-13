@@ -25,21 +25,27 @@ public class ThongKeController {
 
     @GetMapping("/thong-ke/hien-thi")
     public String hienThiThongKe(@RequestParam(name = "year", required = false, defaultValue = "2024") int year,
-                                 @RequestParam(name = "month", required = false, defaultValue = "3") int month,
-                                 @RequestParam(name = "day", required = false, defaultValue = "09") int day,
+                                 @RequestParam(name = "month", required = false, defaultValue = "02") int month,
+                                 @RequestParam(name = "day", required = false, defaultValue = "01") int day,
+                                 @RequestParam(name = "trangThai", required = false, defaultValue = "01") int trangThai,
 
                                  @RequestParam(name = "startDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDate,
                                  @RequestParam(name = "endDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDate,
 
                                  Model model) {
         //doanh thu ngay thang nam
-        Long doanhThuNgayThangNam = thongKeService.getRevenue(day, month, year);
+        Long doanhThuNgayThangNam = thongKeService.getTongDoanhThuNgayThangNam(day, month, year);
 
+        //so luong san pham
         Long tongSoLuong = thongKeService.getTongSoLuongBanNgayThangNam(startDate, endDate);
-        Long tongSoLuongHoaDon = thongKeService.getTongSoLuongHoaDonBanNgayThangNam(startDate, endDate);
+
+        //so luong hoa don
+        Long tongSoLuongHoaDon = thongKeService.getTongSoLuongHoaDonTheoNgayThangNam(day,month,year,trangThai);
 
         //thong ke theo bieu do
         Map<String, Long> thongKeDoanhThuTheoThang = thongKeService.getThongKeDoanhThuTheoThang();
+
+
         model.addAttribute("thongKeDoanhThuTheoThang", thongKeDoanhThuTheoThang);
 
         model.addAttribute("doanhThuNgayThangNam", doanhThuNgayThangNam);
