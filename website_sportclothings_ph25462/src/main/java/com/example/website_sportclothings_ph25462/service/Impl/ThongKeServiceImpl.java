@@ -16,8 +16,8 @@ public class ThongKeServiceImpl implements ThongKeService {
     ThongKeRepository thongKeRepository;
 
     @Override
-    public Long getRevenue(int day, int month, int year) {
-        return thongKeRepository.revenueDayMonthYear(day, month, year);
+    public Long getTongDoanhThuNgayThangNam(int day, int month, int year) {
+        return thongKeRepository.tongDoanhThuNgayThangNam(day, month, year);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class ThongKeServiceImpl implements ThongKeService {
     }
 
     @Override
-    public Long getTongSoLuongHoaDonBanNgayThangNam(LocalDateTime startDate, LocalDateTime endDate) {
-        return thongKeRepository.tongSoLuongHoaDonTheoNgayThangNam(startDate, endDate);
+    public Long getTongSoLuongHoaDonTheoNgayThangNam(int day, int month, int year,int trangThai) {
+        return thongKeRepository.tongSoLuongHoaDonTheoNgayThangNam(day, month, year,trangThai);
     }
 
     @Override

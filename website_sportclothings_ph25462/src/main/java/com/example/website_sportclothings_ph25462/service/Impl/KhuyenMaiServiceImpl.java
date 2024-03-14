@@ -33,4 +33,9 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
         return khuyenMaiRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public List<KhuyenMai> search(String key) {
+        return khuyenMaiRepository.searchKhuyenMaiBy(key);
+    }
+
 }
