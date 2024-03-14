@@ -11,6 +11,4 @@ public interface HoaDonRepository extends JpaRepository<HoaDon, Long> {
 
     @Query(value = " SELECT TOP 1 id FROM hoa_don ORDER BY id DESC ", nativeQuery = true)
     Long gietIdMax();
-
-
 }

@@ -16,8 +16,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDateTime;
 
-import java.util.Date;
 
 @Entity
 @Table(name = "chi_tiet_san_pham")
@@ -36,10 +36,8 @@ public class ChiTietSP {
     @Column(name = "so_luong")
     private Integer soLuong;
 
-
     @Column(name = "gia_hien_hanh")
     private Long giaHienHanh;
-
 
     @Column(name = "trang_thai")
     private Integer trangThai;
@@ -47,11 +45,11 @@ public class ChiTietSP {
 
     @Column(name = "ngay_tao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date ngayTao;
+    private LocalDateTime ngayTao;
 
     @Column(name = "ngay_sua")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date ngaySua;
+    private LocalDateTime ngaySua;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore

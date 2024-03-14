@@ -1,6 +1,5 @@
 package com.example.website_sportclothings_ph25462.service.Impl;
 
-import com.example.website_sportclothings_ph25462.entity.ChiTietSanPham;
 import com.example.website_sportclothings_ph25462.entity.GioHang;
 import com.example.website_sportclothings_ph25462.entity.GioHangChiTiet;
 import com.example.website_sportclothings_ph25462.entity.KhachHang;
