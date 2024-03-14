@@ -60,29 +60,41 @@ public class ChiTietKhuyenMaiServiceImpl implements ChiTietKhuyenMaiService {
         chiTietKhuyenMaiRepository.save(chiTietKhuyenMai);
         Optional<KhuyenMai> khuyenMaiOptional = khuyenMaiRepository.findById(chiTietKhuyenMai.getKhuyenMai().getId());
         Integer trangThai = Math.toIntExact(khuyenMaiOptional.get().getTrangThai());
-        if (khuyenMaiOptional.isPresent()) {
-            KhuyenMai khuyenMai = khuyenMaiOptional.get();
-            if (trangThai != null && trangThai == 1) {
-                for (ChiTietKhuyenMai ctkm : khuyenMai.getChiTietKhuyenMaiList()) {
-                    Optional<ChiTietSP> chiTietSPOptional = chiTietSPRepository.findById(ctkm.getChiTietSP().getId());
-                    if (chiTietSPOptional.isPresent()) {
-                        ChiTietSP chiTietSP = chiTietSPOptional.get();
-                        if (chiTietKhuyenMai.getHinhThucGiam() == 1) {
-                            chiTietSP.setGiaHienHanh((long) (chiTietSP.getGiaGoc() * (100 - chiTietKhuyenMai.getGiaTriGiam()) / 100));
-                        }
-                        chiTietSPRepository.save(chiTietSP);
-                    }
+        if (trangThai != null && trangThai == 2) {
+            for (ChiTietKhuyenMai ctkm : khuyenMaiOptional.get().getChiTietKhuyenMaiList()) {
+
+                Optional<ChiTietSP> chiTietSPOptional = chiTietSPRepository.findById(ctkm.getChiTietSP().getId());
+                if (ctkm.getHinhThucGiam() == 1) {
+                    chiTietSPOptional.get().setGiaHienHanh((long) (chiTietSPOptional.get().getGiaGoc() * (100 - chiTietKhuyenMai.getGiaTriGiam()) / 100));
                 }
+                chiTietSPRepository.save(chiTietSPOptional.get());
             }
         }
+
+
         return chiTietKhuyenMaiRepository.save(chiTietKhuyenMai);
     }
 
     @Override
 
-    public ChiTietKhuyenMai update(Long id) {
+    public ChiTietKhuyenMai update(ChiTietKhuyenMai chiTietKhuyenMai, Long id) {
+        chiTietKhuyenMai.setId(id);
+        chiTietKhuyenMaiRepository.save(chiTietKhuyenMai);
+        Optional<KhuyenMai> khuyenMaiOptional = khuyenMaiRepository.findById(chiTietKhuyenMai.getKhuyenMai().getId());
+        Integer trangThai = Math.toIntExact(khuyenMaiOptional.get().getTrangThai());
+        if (trangThai != null && trangThai == 2) {
+            for (ChiTietKhuyenMai ctkm : khuyenMaiOptional.get().getChiTietKhuyenMaiList()) {
 
-        return chiTietKhuyenMaiRepository.findById(id).orElse(null);
+                Optional<ChiTietSP> chiTietSPOptional = chiTietSPRepository.findById(ctkm.getChiTietSP().getId());
+                if (ctkm.getHinhThucGiam() == 1) {
+                    chiTietSPOptional.get().setGiaHienHanh((long) (chiTietSPOptional.get().getGiaGoc() * (100 - chiTietKhuyenMai.getGiaTriGiam()) / 100));
+                }
+                chiTietSPRepository.save(chiTietSPOptional.get());
+            }
+        }
+
+
+        return chiTietKhuyenMaiRepository.save(chiTietKhuyenMai);
     }
 
 

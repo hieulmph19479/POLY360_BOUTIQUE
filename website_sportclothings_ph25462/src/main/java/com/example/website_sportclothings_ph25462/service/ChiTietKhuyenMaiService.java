@@ -10,7 +10,7 @@ public interface ChiTietKhuyenMaiService {
 
     ChiTietKhuyenMai add(ChiTietKhuyenMai chiTietKhuyenMai);
 
-    ChiTietKhuyenMai update(Long id);
+    ChiTietKhuyenMai update(ChiTietKhuyenMai chiTietKhuyenMai,Long id);
 
     void remove(Long id);
 }

@@ -36,8 +36,6 @@ public class HoaDonChiTiet {
     @Column(name = "ghi_chu", columnDefinition = "NVARCHAR(MAX)")
     private String ghiChu;
 
-    @Column(name = "ghi_chu")
-    private String ghiChu;
 
     @Column(name = "ngay_tao")
     private LocalDateTime ngayTao;
