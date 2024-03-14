@@ -1,3 +1,4 @@
+
 package com.example.website_sportclothings_ph25462.controller;
 
 import com.example.website_sportclothings_ph25462.entity.ChiTietKhuyenMai;
@@ -23,6 +24,7 @@ public class CapNhatTrangThaiController {
 
     @Autowired
     VoucherService voucherService;
+
 
     @Scheduled(cron = "0 53 13 * * ?") // 0h everyday
     public void run() {

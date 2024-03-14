@@ -16,8 +16,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "chi_tiet_san_pham")
@@ -44,6 +44,7 @@ public class ChiTietSP {
 
     @Column(name = "trang_thai")
     private Integer trangThai;
+
 
     @Column(name = "ngay_tao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

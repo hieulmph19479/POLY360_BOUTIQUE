@@ -1,5 +1,6 @@
 package com.example.website_sportclothings_ph25462.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,17 +9,20 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Table(name = "hoa_don_chi_tiet")
 @Entity
+@Table(name = "hoa_don_chi_tiet")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+
 public class HoaDonChiTiet {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private Long id;
 
     @Column(name = "ma_hoa_don_chi_tiet")
     private String maHoaDonChiTiet;
@@ -27,7 +31,10 @@ public class HoaDonChiTiet {
     private Integer soLuong;
 
     @Column(name = "don_gia")
-    private Long donGia;
+    private Float donGia;
+
+    @Column(name = "ghi_chu", columnDefinition = "NVARCHAR(MAX)")
+    private String ghiChu;
 
     @Column(name = "ghi_chu")
     private String ghiChu;
@@ -47,6 +54,7 @@ public class HoaDonChiTiet {
     @Column(name = "trang_thai")
     private Integer trangThai;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hoa_don_id", referencedColumnName = "id")
     private HoaDon hoaDon;
@@ -56,3 +64,5 @@ public class HoaDonChiTiet {
     private ChiTietSP chiTietSP;
 
 }
+
+

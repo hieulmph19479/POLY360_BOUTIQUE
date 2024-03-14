@@ -1,20 +1,19 @@
-//package com.example.website_sportclothings_ph25462.service.Impl;
-//
-//
-//import com.example.website_sportclothings_ph25462.repository.ChiTietSanPhamRepository;
-//import com.example.website_sportclothings_ph25462.service.ChiTietSanPhamService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.PageRequest;
-//import org.springframework.data.domain.Pageable;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.List;
-//import java.util.UUID;
-//
-//@Service
-//public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
-//
+package com.example.website_sportclothings_ph25462.service.Impl;
+
+
+import com.example.website_sportclothings_ph25462.repository.ChiTietSanPhamRepository;
+import com.example.website_sportclothings_ph25462.service.ChiTietSanPhamService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
+
 //    @Autowired
 //    private ChiTietSanPhamRepository chiTietSanPhamRepository;
 //
@@ -26,12 +25,30 @@
 //    }
 //
 //    @Override
-//    public ChiTietSanPham getOne(String id) {
-//        return chiTietSanPhamRepository.findById(UUID.fromString(id)).orElse(null);
+//
+//    public ChiTietSanPham getOne(Long id) {
+//        return chiTietSanPhamRepository.findById(id).orElse(null);
 //    }
+////        public ChiTietSanPham getOne (String id){
+////            return chiTietSanPhamRepository.findById(UUID.fromString(id)).orElse(null);
+////
+////        }
 //
 //    @Override
 //    public List<ChiTietSanPham> getAll() {
 //        return chiTietSanPhamRepository.findAll();
 //    }
-//}
+//
+//
+//    @Override
+//    public List<ChiTietSanPham> getCTSPByIdSanPham(long id) {
+//        return chiTietSanPhamRepository.getAllByIdSanPham(id);
+//    }
+//
+//    @Override
+//    public ChiTietSanPham getCTSPByIdSanPhamAndIdMauSacAndIdKichCo(long idSP, long idMauSac, long idKicCo) {
+//        return chiTietSanPhamRepository.getAllByIdSanPhamAndIdMauSacAndIdKichCo(idSP, idMauSac, idKicCo);
+    }
+
+}
+

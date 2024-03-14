@@ -10,11 +10,39 @@ import java.util.List;
 
 @Service
 public class HoaDonServiceImpl implements HoaDonService {
+
+
+    @Autowired
+    private HoaDonRepository hoaDonRepository;
+
     @Autowired
     HoaDonRepository hoaDonRepository;
+
 
     @Override
     public List<HoaDon> getAll() {
         return hoaDonRepository.findAll();
     }
+
+
+    @Override
+    public HoaDon add(HoaDon hoaDon) {
+        return hoaDonRepository.save(hoaDon);
+    }
+
+    @Override
+    public HoaDon update(HoaDon hoaDon) {
+        return hoaDonRepository.save(hoaDon);
+    }
+
+    @Override
+    public HoaDon getOne(Long id) {
+        return hoaDonRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(Long id) {
+        hoaDonRepository.delete(getOne(id));
+    }
+
 }

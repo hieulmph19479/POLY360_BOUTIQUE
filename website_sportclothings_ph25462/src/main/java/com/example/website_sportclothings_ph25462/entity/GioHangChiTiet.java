@@ -1,13 +1,19 @@
 package com.example.website_sportclothings_ph25462.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Table(name = "gio_hang_chi_tiet")
 @Entity
@@ -30,7 +36,14 @@ public class GioHangChiTiet {
     private Date ngaySua;
     @Column(name = "trang_thai")
     private Boolean tt;
+
 //    @OneToOne()
 //    @JoinColumn(name = "chi_tiet_san_pham_id")
-//    private ChiTietSanPham nguoiSoHuu;
+//    private ChiTietSanPham chiTietSanPham;
+
+    @OneToOne()
+    @JoinColumn(name = "gio_hang_id")
+    private GioHang gioHang;
+
+
 }

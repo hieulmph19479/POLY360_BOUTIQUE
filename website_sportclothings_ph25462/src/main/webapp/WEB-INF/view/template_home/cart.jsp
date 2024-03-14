@@ -22,6 +22,7 @@
 
 
 <div class="row">
+
     <c:forEach items="${hienthi.content}" var="hienthis">
         <div class="col-3 mt-3">
             <div class="card">
@@ -33,14 +34,13 @@
                     <div class="card-body">
                         <h5 class="card-title">${hienthis.sanPham.ten}</h5>
                     </div>
-                    <ul class="list-group list-group-flush">
-
-                        <li class="list-group-item">Gía tiền: ${hienthis.sanPham.gia }
-                                <%--                        <fmt:formatNumber--%>
-                                <%--                                pattern="###,### VNĐ">--%>
-                                <%--                        </fmt:formatNumber>--%>
-                        </li>
-                    </ul>
+                        <%--                    <ul class="list-group list-group-flush">--%>
+                        <%--                        <li class="list-group-item">Gía tiền: ${hienthis.sanPham.gia }--%>
+                        <%--                                &lt;%&ndash;                        <fmt:formatNumber&ndash;%&gt;--%>
+                        <%--                                &lt;%&ndash;                                pattern="###,### VNĐ">&ndash;%&gt;--%>
+                        <%--                                &lt;%&ndash;                        </fmt:formatNumber>&ndash;%&gt;--%>
+                        <%--                        </li>--%>
+                        <%--                    </ul>--%>
 
                 </div>
 
@@ -48,6 +48,7 @@
         </div>
     </c:forEach>
 </div>
+
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <c:if test="${hienthi.totalPages > 0}">
@@ -61,6 +62,9 @@
         </c:if>
     </ul>
 </nav>
+
+</div>
+
 
 </div>
 

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link rel="stylesheet" type="text/css" href="../../../css/header.css">
 <%@ page pageEncoding="utf-8" %>
 <header>
@@ -37,35 +39,57 @@
                     <div onclick="myFunction()"><i class="far fa-user"
                                                    style="color: #2D2D2D;font-size: 30px;margin-left: 20px;"></i>
                     </div>
+
+
+                    <div>${principal.tenTK}</div>
                     <div class="popuptext" id="myPopup">
-                        <a href="/poly360boutique/dang-nhap">Đăng nhập</a>
-                        <a>Đăng xuất</a>
+                        <c:choose>
+                            <c:when test="${empty principal}">
+                                <ul class="nav-dropdown nav-submenu">
+                                    <li><a href="/login">Đăng nhập</a></li>
+                                    <li><a href="/register">Đăng ký</a></li>
+                                </ul>
+                            </c:when>
+                            <c:otherwise>
+                                <ul class="nav-dropdown nav-submenu">
+                                    <li><a href="/user/${principal.tenTK}/profile">Thông tin tài khoản</a></li>
+                                    <li><a href="/logout">Đăng xuất</a></li>
+                                </ul>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
+
+
                     <div class="dropdown">
                         <i id="cartIcon" class="fa-sharp fa-regular fa-cart-shopping"
                            style="color: #2D2D2D; margin-right: 20px;margin-left: 20px;font-size: 30px"></i>
                         <div class="dropdown-menu" aria-labelledby="cartIcon" id="cartDropdown">
-                            <h3>Giỏ hàng</h3>
-                            <ul id="cartItems"></ul>
-                        </div>
-                    </div>
 
-                    <%--                    <div class="span8">--%>
-                    <%--                        <div class="account pull-right">--%>
-                    <%--                            <ul class="user-menu">--%>
-                    <%--                                &lt;%&ndash;                                <li><a href="<c:url value='/cart/view' />">Your Cart <b>(<span&ndash;%&gt;--%>
-                    <%--                                &lt;%&ndash;                                        id="countTotal">${sessionScope.cart == null ? '0' : sessionScope.cart.tongsl}</span>)</b></a>&ndash;%&gt;--%>
-                    <%--                                &lt;%&ndash;                                </li>&ndash;%&gt;--%>
-                    <%--                                <c:if test="${empty sessionScope.taikhoan}">--%>
-                    <%--                                    <li><a href="/poly360boutique/dang-nhap">Login</a></li>--%>
-                    <%--                                </c:if>--%>
-                    <%--                                <c:if test="${not empty sessionScope.taikhoan}">--%>
-                    <%--                                    <li><a href="/poly360boutique/logout">Logout</a></li>--%>
-                    <%--                                    <li><i>Welcome,</i> <b>${sessionScope.taikhoan.tenTK}</b></li>--%>
-                    <%--                                </c:if>--%>
-                    <%--                            </ul>--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
+                            <c:if test="${empty carts}">
+                                <img src="https://salanest.com/img/empty-cart.webp" height="250px" width="300px">
+                            </c:if>
+
+                            <c:forEach var="gioHangChiTiet" items="${carts}">
+
+
+                                <ul id="cartItems"><h5> ${gioHangChiTiet.chiTietSanPham.sanPham.ten}</h5></ul>
+
+                                <div class="col">
+                                    <h6><span>Gia: ${gioHangChiTiet.chiTietSanPham.gia}.đ</span></h6>
+                                    <h6><span>Màu: ${gioHangChiTiet.chiTietSanPham.mauSac.ten}</span></h6>
+                                    <h6><span>Size: ${gioHangChiTiet.chiTietSanPham.kichCo.ten}</span></h6>
+                                    <h6><span>Số Lượng: ${gioHangChiTiet.soLuong}</span></h6>
+                                </div>
+
+                                <a href="/checkout/show" class="btn buy-btn">Buy Now</a>
+                                <a href="/gio-hang" class="btn cart-btn">Chỉnh Sửa</a>
+                            </c:forEach>
+
+
+                        </div>
+
+
+                    </div>
 
 
                 </div>

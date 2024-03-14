@@ -63,6 +63,7 @@
 </div>
 
 <div class="filter-container">
+
     <label for="size-filter">Kích cỡ:</label>
     <select id="size-filter">
         <option value="">Tất cả</option>
