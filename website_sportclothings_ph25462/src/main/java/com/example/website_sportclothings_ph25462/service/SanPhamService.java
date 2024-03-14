@@ -17,4 +17,7 @@ public interface SanPhamService {
 
     SanPham getOne(String maCL);
 
+    SanPham getById(long id);
+
+
 }

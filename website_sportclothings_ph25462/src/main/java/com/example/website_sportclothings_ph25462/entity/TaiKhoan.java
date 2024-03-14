@@ -1,7 +1,20 @@
 package com.example.website_sportclothings_ph25462.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -36,11 +49,13 @@ public class TaiKhoan {
     @Column(name = "so_dien_thoai")
     private Integer sdt;
 
+    @NotBlank(message = "Email khong duoc de trong")
     @Column(name = "email")
     private String email;
-
+    @NotBlank(message = "Ten tai khoan khong duoc de trong")
     @Column(name = "ten_tai_khoan")
     private String tenTK;
+    @NotBlank(message = "Mat khau khong duoc de trong")
 
     @Column(name = "mat_khau")
     private String matKhau;

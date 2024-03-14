@@ -22,4 +22,5 @@ public class VoucherServiceImpl implements VoucherService {
     public void add(Voucher voucher) {
         voucherRepository.save(voucher);
     }
+
 }

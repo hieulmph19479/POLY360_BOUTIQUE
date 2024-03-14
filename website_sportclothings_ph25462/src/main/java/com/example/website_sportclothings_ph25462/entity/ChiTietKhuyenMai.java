@@ -1,3 +1,4 @@
+
 package com.example.website_sportclothings_ph25462.entity;
 
 import jakarta.persistence.*;
@@ -43,3 +44,4 @@ public class ChiTietKhuyenMai {
     @Column(name = "trang_thai")
     private Integer trangThai;
 }
+
