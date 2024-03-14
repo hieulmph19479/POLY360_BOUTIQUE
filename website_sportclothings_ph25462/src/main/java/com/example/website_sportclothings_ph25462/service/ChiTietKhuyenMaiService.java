@@ -7,4 +7,10 @@ import java.util.List;
 
 public interface ChiTietKhuyenMaiService {
     List<ChiTietKhuyenMai> getAll();
+
+    ChiTietKhuyenMai add(ChiTietKhuyenMai chiTietKhuyenMai);
+
+    ChiTietKhuyenMai update(Long id);
+
+    void remove(Long id);
 }

@@ -1,6 +1,5 @@
 package com.example.website_sportclothings_ph25462.controller;
 
-import com.example.website_sportclothings_ph25462.entity.ChiTietSanPham;
 import com.example.website_sportclothings_ph25462.entity.GioHangChiTiet;
 import com.example.website_sportclothings_ph25462.entity.KhachHang;
 import com.example.website_sportclothings_ph25462.entity.TaiKhoan;

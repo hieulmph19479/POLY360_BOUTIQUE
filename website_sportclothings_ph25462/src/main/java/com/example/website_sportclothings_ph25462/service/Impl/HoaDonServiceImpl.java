@@ -11,13 +11,19 @@ import java.util.List;
 @Service
 public class HoaDonServiceImpl implements HoaDonService {
 
+
     @Autowired
     private HoaDonRepository hoaDonRepository;
+
+    @Autowired
+    HoaDonRepository hoaDonRepository;
+
 
     @Override
     public List<HoaDon> getAll() {
         return hoaDonRepository.findAll();
     }
+
 
     @Override
     public HoaDon add(HoaDon hoaDon) {
@@ -38,4 +44,5 @@ public class HoaDonServiceImpl implements HoaDonService {
     public void delete(Long id) {
         hoaDonRepository.delete(getOne(id));
     }
+
 }

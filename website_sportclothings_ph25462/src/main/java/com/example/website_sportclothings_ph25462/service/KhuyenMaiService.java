@@ -1,6 +1,7 @@
 package com.example.website_sportclothings_ph25462.service;
 
 import com.example.website_sportclothings_ph25462.entity.KhuyenMai;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface KhuyenMaiService {
     void remove(Long id);
 
     KhuyenMai update(Long id);
+
+    List<KhuyenMai> search(String key);
 }

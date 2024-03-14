@@ -13,16 +13,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.Date;
 
+@Table(name = "hoa_don")
 @Entity
-@Table(name = "Hoa_Don")
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class HoaDon {
+
 
 
     @Id
@@ -99,10 +100,5 @@ public class HoaDon {
     @ManyToOne
     @JoinColumn(name = "tai_khoan_id")
     private TaiKhoan taiKhoan;
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "phuong_thuc_thanh_toan_id")
-//    private PhuongThucThanhToan phuongThucThanhToan;
 
 }

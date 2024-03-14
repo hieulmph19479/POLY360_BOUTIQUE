@@ -13,5 +13,4 @@ public interface HoaDonChiTietRepository extends JpaRepository<HoaDonChiTiet, Lo
 
     @Query(value = "select * from hoa_Don_chi_tiet where hoa_don_id = :id ", nativeQuery = true)
     public List<HoaDonChiTiet> getHoaDonChiTietByIdHoaDon(@Param("id") Long id);
-
 }

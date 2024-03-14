@@ -1,7 +1,5 @@
 package com.example.website_sportclothings_ph25462.controller;
 
-import com.example.website_sportclothings_ph25462.entity.ChiTietSanPham;
-import com.example.website_sportclothings_ph25462.entity.GioHang;
 import com.example.website_sportclothings_ph25462.entity.GioHangChiTiet;
 import com.example.website_sportclothings_ph25462.entity.HinhAnhSP;
 import com.example.website_sportclothings_ph25462.entity.KhachHang;
@@ -9,8 +7,6 @@ import com.example.website_sportclothings_ph25462.entity.KichCo;
 import com.example.website_sportclothings_ph25462.entity.MauSac;
 import com.example.website_sportclothings_ph25462.entity.SanPham;
 import com.example.website_sportclothings_ph25462.entity.TaiKhoan;
-import com.example.website_sportclothings_ph25462.repository.GioHangChiTietRepository;
-import com.example.website_sportclothings_ph25462.repository.GioHangRepository;
 import com.example.website_sportclothings_ph25462.repository.KhachHangRepository;
 import com.example.website_sportclothings_ph25462.security.TaiKhoanDangDangNhap;
 import com.example.website_sportclothings_ph25462.service.ChiTietSanPhamService;
@@ -45,7 +41,7 @@ public class HomeController {
     private HinhAnhSPService hinhAnhSPService;
 
     @Autowired
-    private ChiTietSanPhamService chiTietSanPhamService;
+    private ChiTietSPService chiTietSPService;
 
     @Autowired
     private KhachHangRepository khachHangRepository;

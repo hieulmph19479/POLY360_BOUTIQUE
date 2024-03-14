@@ -28,7 +28,7 @@ public class ChiTietKhuyenMai {
     private Integer hinhThucGiam; //1 theo % : 2 theo hóa đơn thành viên//
 
     @Column(name = "gia_tri_giam")
-    private Long giaTriGiam; //giá trị giảm == giá trị bên khuyến mại//
+    private Long giaTriGiam;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_chi_tiet_san_pham", referencedColumnName = "id")
