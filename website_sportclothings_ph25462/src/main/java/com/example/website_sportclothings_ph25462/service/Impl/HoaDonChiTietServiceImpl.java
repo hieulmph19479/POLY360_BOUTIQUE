@@ -55,6 +55,11 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
+    public List<HoaDonChiTiet> getHDCTByIdHoaDon(long id) {
+        return hoaDonChiTietRepository.getHoaDonChiTietByIdHoaDon(id);
+    }
+
+    @Override
     public HoaDon createOrder(KhachHang kh, String address, List<GioHangChiTiet> gioHangChiTietList, Long phiVanChuyen) {
 
         HoaDon hoaDon = new HoaDon();

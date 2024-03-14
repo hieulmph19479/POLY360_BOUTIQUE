@@ -32,5 +32,5 @@ public class GioHang {
     private Boolean tt;
     @OneToOne()
     @JoinColumn(name = "nguoi_so_huu")
-    private KhachHang nguoiSoHuu;
+    private KhachHang khachHang;
 }

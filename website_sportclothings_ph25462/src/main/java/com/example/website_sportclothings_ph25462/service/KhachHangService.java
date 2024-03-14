@@ -23,4 +23,6 @@ public interface KhachHangService {
 
     KhachHang getOneById(Long id);
 
+    KhachHang getKHByIdTaiKhoan(Long id);
+
 }

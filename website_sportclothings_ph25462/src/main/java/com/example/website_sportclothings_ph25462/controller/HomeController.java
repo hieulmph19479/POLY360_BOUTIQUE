@@ -1,12 +1,23 @@
 package com.example.website_sportclothings_ph25462.controller;
 
+import com.example.website_sportclothings_ph25462.entity.ChiTietSanPham;
+import com.example.website_sportclothings_ph25462.entity.GioHang;
+import com.example.website_sportclothings_ph25462.entity.GioHangChiTiet;
 import com.example.website_sportclothings_ph25462.entity.HinhAnhSP;
+import com.example.website_sportclothings_ph25462.entity.KhachHang;
+import com.example.website_sportclothings_ph25462.entity.KichCo;
+import com.example.website_sportclothings_ph25462.entity.MauSac;
 import com.example.website_sportclothings_ph25462.entity.SanPham;
 import com.example.website_sportclothings_ph25462.entity.TaiKhoan;
+import com.example.website_sportclothings_ph25462.repository.GioHangChiTietRepository;
+import com.example.website_sportclothings_ph25462.repository.GioHangRepository;
+import com.example.website_sportclothings_ph25462.repository.KhachHangRepository;
+import com.example.website_sportclothings_ph25462.security.TaiKhoanDangDangNhap;
 import com.example.website_sportclothings_ph25462.service.ChiTietSanPhamService;
+import com.example.website_sportclothings_ph25462.service.GioHangChiTietService;
+import com.example.website_sportclothings_ph25462.service.GioHangService;
 import com.example.website_sportclothings_ph25462.service.HinhAnhSPService;
 import com.example.website_sportclothings_ph25462.service.SanPhamService;
-import com.example.website_sportclothings_ph25462.service.TaiKhoanService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,11 +26,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/poly360boutique")
@@ -36,7 +48,20 @@ public class HomeController {
     private ChiTietSanPhamService chiTietSanPhamService;
 
     @Autowired
-    private TaiKhoanService taiKhoanService;
+    private KhachHangRepository khachHangRepository;
+
+    @Autowired
+    private TaiKhoanDangDangNhap taiKhoanDangDangNhap;
+
+    @Autowired
+    private HttpSession session;
+
+    @Autowired
+    private GioHangChiTietService gioHangChiTietService;
+
+    @Autowired
+    private GioHangService gioHangService;
+
 
 
     @GetMapping("/home")
@@ -56,13 +81,26 @@ public class HomeController {
 
     @GetMapping("/san-pham/detail/{id}")
     public String detail(@PathVariable("id") String id, Model model) {
-        HinhAnhSP hinhAnhSP = hinhAnhSPService.getOne(id);
 
-        Page<HinhAnhSP> hinhAnhSPS = hinhAnhSPService.getData(0);
-        model.addAttribute("hienthi", hinhAnhSPS);
+        try {
+            HinhAnhSP hinhAnhSP = hinhAnhSPService.getOne(id);
+            Page<HinhAnhSP> hinhAnhSPS = hinhAnhSPService.getData(0);
+            model.addAttribute("hienthi", hinhAnhSPS);
 
+            SanPham sanPham = sanPhamService.getById(Long.valueOf(id));
+            List<ChiTietSanPham> chiTietSanPhamList = chiTietSanPhamService.getCTSPByIdSanPham(sanPham.getId());
+            Set<MauSac> mauSacSet = (Set) chiTietSanPhamList.stream().map(ChiTietSanPham::getMauSac).collect(Collectors.toSet());
+            Set<KichCo> kichCoSet = (Set) chiTietSanPhamList.stream().map(ChiTietSanPham::getKichCo).collect(Collectors.toSet());
+            model.addAttribute("sanPham", sanPham);
+            model.addAttribute("listMauSac", mauSacSet);
+            model.addAttribute("listKichCo", kichCoSet);
 
-        model.addAttribute("detail", hinhAnhSP);
+            model.addAttribute("detail", hinhAnhSP);
+            return "/template_home/detail";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return "/template_home/detail";
     }
 
@@ -83,29 +121,36 @@ public class HomeController {
         return "redirect:/poly360boutique/dang-nhap";
     }
 
-    @PostMapping("/login")
-    public String login(
+    @ModelAttribute("principal")
+    public TaiKhoan principal() {
+        TaiKhoan taiKhoan = taiKhoanDangDangNhap.getCurrentNguoiDung();
 
-            @RequestParam("username") String username,
-            @RequestParam("password") String password,
-
-            Model model, @ModelAttribute(name = "taikhoan") TaiKhoan taiKhoan,
-            HttpSession session) {
-
-        TaiKhoan taiKhoans = taiKhoanService.checkLogin(username, password);
-
-        if (taiKhoans != null) {
-            session.setAttribute("taikhoanlogin", taiKhoans);
-            return "redirect:/poly360boutique/home";
-        } else {
-            session.setAttribute("taikhoanlogin", null);
-        }
-
-        model.addAttribute("message", "Ten tai khoan hoac mat khau khong dung");
-
-        return ("/login/dangnhap");
+        return taiKhoan;
     }
 
+    @ModelAttribute(name = "carts")
+    public List<GioHangChiTiet> cartItems() {
+
+        TaiKhoan taiKhoan = taiKhoanDangDangNhap.getCurrentNguoiDung();
+
+        if(taiKhoan != null){
+            KhachHang khachHang = khachHangRepository.getKhachHangByIdTaiKhoan(taiKhoan.getId());
+            System.out.printf("KH " + khachHang.getTen());
+            List<GioHangChiTiet> gioHangChiTietDB = gioHangChiTietService.getAllByKhachHang(khachHang);
+
+            return gioHangChiTietDB;
+        }
+
+        if(taiKhoan == null){
+            List<GioHangChiTiet> gioHangChiTietList = (List<GioHangChiTiet>) session.getAttribute("gioHangCT");
+            if (gioHangChiTietList != null) {
+                System.out.printf("số luộng SP gio hang vvvv: " + gioHangChiTietList.size());
+            }
+            return gioHangChiTietList;
+        }
+
+        return null;
+    }
 
 }
 

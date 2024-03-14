@@ -25,7 +25,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="../../../js/themNhanhDiaChi.js"></script>
+
 
 </head>
 <body>
@@ -43,8 +43,9 @@
             <br><br>
             <div id="buttons">
 
-                <a href="/" class="btn btn-primary btn-lg">Trang chủ</a>
-                <a href="/user/orderDetail/${idDonHang} " class="btn btn-secondary btn-lg">Xem đơn hàng</a>
+<%--                <a href="/poly360boutique/home" class="btn btn-primary btn-lg">Trang chủ</a>--%>
+                <a href="/poly360boutique/home" class="btn btn-lg btn-primary ">Trang chủ </a>
+                <a href="/donHang/donHangChiTiet/${idHD} " class="btn btn-secondary btn-lg">Xem đơn hàng</a>
 
             </div>
             <br>

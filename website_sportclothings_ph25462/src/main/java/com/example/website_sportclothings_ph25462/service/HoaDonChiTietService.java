@@ -19,6 +19,8 @@ public interface HoaDonChiTietService {
 
     public void delete(Long id);
 
+    public List<HoaDonChiTiet> getHDCTByIdHoaDon(long id);
+
     public HoaDon createOrder(KhachHang kh, String address, List<GioHangChiTiet> gioHangChiTietList, Long phiVanChuyen);
 
 }

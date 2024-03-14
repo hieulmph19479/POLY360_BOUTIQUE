@@ -90,8 +90,7 @@
 
     <div class="login-container">
 
-        <form action="/poly360boutique/login" method="post" modelAttribute="taikhoan" mode
-              onsubmit="return validateForm()">
+        <form action="/login" method="post" modelAttribute="taikhoan" mode onsubmit="return validateForm()">
 
             <h3 style="text-align: center; font-weight: bold;font-size: 30px">POLY 360 BOUTIQUE</h3>
             <br>

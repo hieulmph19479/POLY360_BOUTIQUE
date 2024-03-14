@@ -157,16 +157,30 @@
                                                 </a>
                                             </c:if>
 
+                                            <c:if test="${cart.id != 0}">
+                                                <a class="btn btn-outline-main1 rounded-left minus" type="button"
+                                                   onclick="delete1SanPham(${cart.id} , ${cart.soLuong})">
+                                                    <i class="fi fi-rr-minus-small"> - </i>
+                                                </a>
+                                            </c:if>
+
 
                                             <input disabled class=" text-center" style="width: 20%;" value="${cart.soLuong}">
 
 
-
+                                            <c:if test="${cart.id == 0}">
                                             <a href="/shopping-cart/up/${cartIndex.index}"
                                                class="btn btn-outline-main1 rounded-right minus" type="button">
                                                 <i class="fi fi-rr-plus-small"> + </i>
                                             </a>
+                                            </c:if>
 
+                                            <c:if test="${cart.id != 0}">
+                                                <a href="/shopping-cart/up/${cart.id}"
+                                                   class="btn btn-outline-main1 rounded-right minus" type="button">
+                                                    <i class="fi fi-rr-plus-small"> + </i>
+                                                </a>
+                                            </c:if>
 
                                         </div>
 
@@ -203,15 +217,15 @@
                 </div>
 
                 <div class="form-group">
-                    <a class="btn btn-block btn-dark mb-3">Tiến Hành Thanh Toán</a>
+                    <a href="/checkout/show" class="btn btn-block btn-dark mb-3">Tiến Hành Thanh Toán</a>
                 </div>
-                <div class="form-group">
-                    <a class="btn stretched-link borders m-auto"><i
-                            class="lni lni-reload mr-2"></i> Load lại giỏ hàng </a>
-                </div>
+<%--                <div class="form-group">--%>
+<%--                    <a class="btn stretched-link borders m-auto"><i--%>
+<%--                            class="lni lni-reload mr-2"></i> Load lại giỏ hàng </a>--%>
+<%--                </div>--%>
 
 
-                <a class="btn-link text-dark ft-medium" href="@{/products}">
+                <a class="btn-link text-dark ft-medium" href="/poly360boutique/home">
                     <i class="ti-back-left mr-2"></i> Quay Lại Shopping
                 </a>
             </div>

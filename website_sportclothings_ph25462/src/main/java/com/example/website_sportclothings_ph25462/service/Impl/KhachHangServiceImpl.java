@@ -48,4 +48,9 @@ public class KhachHangServiceImpl implements KhachHangService {
         return khr.findById(id).orElse(null);
     }
 
+    @Override
+    public KhachHang getKHByIdTaiKhoan(Long id) {
+        return khr.getKhachHangByIdTaiKhoan(id);
+    }
+
 }

@@ -19,4 +19,12 @@ public interface GioHangChiTietService {
 
     public void delete(Long id);
 
+    public GioHangChiTiet getGioHangChiTietByIdGioHangAndIdCTSP(long idGioHang, long idSPCT);
+
+    public GioHangChiTiet getOne(Long id);
+
+    public void loginAddToCart();
+
+    public void clearAll(long idGioHang);
+
 }

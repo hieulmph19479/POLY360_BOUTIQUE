@@ -53,16 +53,16 @@ public class ThuongHieuController {
 //    }
 
 
-    @ModelAttribute(name = "carts")
-    public List<GioHangChiTiet> cartItems() {
-        List<GioHangChiTiet> gioHangChiTietList = (List<GioHangChiTiet>) session.getAttribute("gioHangCT");
-
-        if (gioHangChiTietList != null) {
-            System.out.printf("số luộng SP gio hang vvvv: " + gioHangChiTietList.size());
-        }
-
-        return gioHangChiTietList;
-    }
+//    @ModelAttribute(name = "carts")
+//    public List<GioHangChiTiet> cartItems() {
+//        List<GioHangChiTiet> gioHangChiTietList = (List<GioHangChiTiet>) session.getAttribute("gioHangCT");
+//
+//        if (gioHangChiTietList != null) {
+//            System.out.printf("số luộng SP gio hang vvvv: " + gioHangChiTietList.size());
+//        }
+//
+//        return gioHangChiTietList;
+//    }
 
 
     @GetMapping("/thuong-hieu/hien-thi")

@@ -41,5 +41,9 @@ public class GioHangChiTiet {
     @JoinColumn(name = "chi_tiet_san_pham_id")
     private ChiTietSanPham chiTietSanPham;
 
+    @OneToOne()
+    @JoinColumn(name = "gio_hang_id")
+    private GioHang gioHang;
+
 
 }

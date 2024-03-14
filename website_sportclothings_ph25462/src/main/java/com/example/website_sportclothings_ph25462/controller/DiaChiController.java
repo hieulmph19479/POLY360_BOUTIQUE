@@ -58,7 +58,7 @@ public class DiaChiController {
         }
 
 
-        return "redirect:/showCheckout";
+        return "redirect:/checkout/show";
     }
 
 }
