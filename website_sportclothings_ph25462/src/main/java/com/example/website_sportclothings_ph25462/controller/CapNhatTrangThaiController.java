@@ -24,7 +24,7 @@ public class CapNhatTrangThaiController {
     @Autowired
     VoucherService voucherService;
 
-    @Scheduled(cron = "0 49 16 * * ?") // 0h everyday
+    @Scheduled(cron = "0 53 13 * * ?") // 0h everyday
     public void run() {
         System.out.println("Lịch trình chạy...");
         LocalDateTime now = LocalDateTime.now();

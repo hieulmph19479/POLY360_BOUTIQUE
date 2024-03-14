@@ -39,23 +39,23 @@
     <form:input path="ngaySua" type="datetime-local" value="${chitietsp.ngaySua}"/><br>
     TenSP:
     <form:select path="sanPham">
-        <form:options items="${sanPham}" itemLabel="ten"/>
+        <form:options items="${sanPham}" itemLabel="ten" itemValue="id"/>
     </form:select><br>
     KichCo:
     <form:select path="kichCo">
-        <form:options items="${kichCo}" itemLabel="ten"/>
+        <form:options items="${kichCo}" itemLabel="ten" itemValue="id"/>
     </form:select><br>
     Mau Sac:
     <form:select path="mauSac">
-        <form:options items="${mauSac}" itemLabel="ten"/>
+        <form:options items="${mauSac}" itemLabel="ten" itemValue="id"/>
     </form:select><br>
     ChatLieu:
     <form:select path="chatLieu">
-        <form:options items="${chatLieu}" itemLabel="ten"/>
+        <form:options items="${chatLieu}" itemLabel="ten" itemValue="id"/>
     </form:select><br>
     ThuongHieu:
     <form:select path="thuongHieu">
-        <form:options items="${thuongHieu}" itemLabel="ten"/>
+        <form:options items="${thuongHieu}" itemLabel="ten" itemValue="id"/>
     </form:select><br>
 
     <form:button class="btn btn-primary">Update</form:button>

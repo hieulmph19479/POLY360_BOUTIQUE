@@ -6,9 +6,11 @@ import com.example.website_sportclothings_ph25462.entity.KhuyenMai;
 import com.example.website_sportclothings_ph25462.service.ChiTietKhuyenMaiService;
 import com.example.website_sportclothings_ph25462.service.ChiTietSPService;
 import com.example.website_sportclothings_ph25462.service.KhuyenMaiService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,8 +49,11 @@ public class ChiTietKhuyenMaiController {
     }
 
     @PostMapping("/chi-tiet-khuyen-mai/hien-thi-add")
-    public String add(ChiTietKhuyenMai chiTietKhuyenMai, Model model) {
-        model.addAttribute("ctkm", new ChiTietKhuyenMai());
+    public String add(@Valid @ModelAttribute("ctkm") ChiTietKhuyenMai chiTietKhuyenMai, Model model, BindingResult result) {
+        if (result.hasErrors()) {
+            model.addAttribute("view", "/chi_tiet_khuyen_mai/add.jsp");
+            return "/chi_tiet_khuyen_mai/add";
+        }
         chiTietKhuyenMaiService.add(chiTietKhuyenMai);
         return "redirect:/chi-tiet-khuyen-mai/hien-thi";
     }
@@ -71,7 +76,6 @@ public class ChiTietKhuyenMaiController {
     @PostMapping("/chi-tiet-khuyen-mai/view-update/{id}")
     public String update(@PathVariable Long id, @ModelAttribute("chiTietKhuyenMai") ChiTietKhuyenMai chiTietKhuyenMai, Model model) {
         model.addAttribute("ctkm", new ChiTietKhuyenMai());
-
         chiTietKhuyenMai.setId(id);
         chiTietKhuyenMaiService.add(chiTietKhuyenMai);
         return "redirect:/chi-tiet-khuyen-mai/hien-thi";

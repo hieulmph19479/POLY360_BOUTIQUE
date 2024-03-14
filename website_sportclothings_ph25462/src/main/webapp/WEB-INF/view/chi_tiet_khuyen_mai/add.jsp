@@ -110,14 +110,10 @@
         </form:select><br>
 
 
-<%--        <div class="input">--%>
-<%--            <label>Ngày Bắt Đầu</label>: <form:input type="datetime-local" path="ngayBatDau"/>--%>
-<%--            <form:errors path="ngayBatDau" cssStyle="color: red"/>--%>
-<%--            <br/>--%>
-<%--        </div>--%>
         <form:button type="submit" class="btn btn-success" id="but">ADD</form:button>
 
     </form:form>
+
     <button class="btn btn-primary"><a href="/chi-tiet-khuyen-mai/hien-thi"
                                        style="text-decoration: none;color: #FFFFFF">QUAY LẠI</a></button>
 

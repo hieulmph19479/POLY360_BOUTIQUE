@@ -2,6 +2,7 @@ package com.example.website_sportclothings_ph25462.controller;
 
 import com.example.website_sportclothings_ph25462.entity.ChatLieu;
 import com.example.website_sportclothings_ph25462.entity.ChiTietSP;
+import com.example.website_sportclothings_ph25462.entity.SanPham;
 import com.example.website_sportclothings_ph25462.repository.ChatLieuRepository;
 import com.example.website_sportclothings_ph25462.repository.ChiTietSPRepository;
 import com.example.website_sportclothings_ph25462.repository.KichCoRepository;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.UUID;
+
 @Controller
 @RequestMapping("/chitietsp")
 public class ChiTietSPController {
@@ -33,10 +36,11 @@ public class ChiTietSPController {
     private ChatLieuRepository chatLieuRepository;
     @Autowired
     private ThuongHieuRepository thuongHieuRepository;
+
     @GetMapping("/hien-thi")
     public String view(Model model) {
         model.addAttribute("list", repository.findAll());
-        model.addAttribute("sp",new ChiTietSP());
+        model.addAttribute("sp", new ChiTietSP());
         model.addAttribute("view", "../chitietsp/index.jsp");
         model.addAttribute("sanPham", sanPhamRepository.findAll());
         model.addAttribute("kichCo", kichCoRepository.findAll());
@@ -45,6 +49,7 @@ public class ChiTietSPController {
         model.addAttribute("thuongHieu", thuongHieuRepository.findAll());
         return "/chitietsp/index";
     }
+
     @GetMapping("/viewadd")
     public String hienThiAdd(@ModelAttribute("ctsp") ChiTietSP chiTietSP, Model model) {
         //   model.addAttribute("view", "../chitietsp/index.jsp");
@@ -53,12 +58,13 @@ public class ChiTietSPController {
         model.addAttribute("mauSac", mauSacRepository.findAll());
         model.addAttribute("chatLieu", chatLieuRepository.findAll());
         model.addAttribute("thuongHieu", thuongHieuRepository.findAll());
-        model.addAttribute("ctsp",new ChiTietSP());
+        model.addAttribute("ctsp", new ChiTietSP());
         return "chitietsp/add";
     }
+
     @PostMapping("/add")
     public String add(ChiTietSP chiTietSp, Model model) {
-        model.addAttribute("sp",new ChiTietSP());
+        model.addAttribute("sp", new ChiTietSP());
         repository.save(chiTietSp);
         return "redirect:/chitietsp/hien-thi";
     }
@@ -72,20 +78,20 @@ public class ChiTietSPController {
     @GetMapping("/update/{id}")
     public String viewUpdate(@PathVariable Long id, Model model) {
         ChiTietSP chiTietSp = repository.findById(id).orElse(null);
-     //   model.addAttribute("view", "../chitietsp/index.jsp");
+
         model.addAttribute("sanPham", sanPhamRepository.findAll());
         model.addAttribute("kichCo", kichCoRepository.findAll());
         model.addAttribute("mauSac", mauSacRepository.findAll());
         model.addAttribute("chatLieu", chatLieuRepository.findAll());
         model.addAttribute("thuongHieu", thuongHieuRepository.findAll());
-        model.addAttribute("sp",new ChiTietSP());
+        model.addAttribute("sp", new ChiTietSP());
         model.addAttribute("chitietsp", chiTietSp);
         return "chitietsp/update";
     }
 
     @PostMapping("/update/{id}")
-    public String update(@PathVariable Long id,@ModelAttribute("chitietsp") ChiTietSP chiTietSp, Model model) {
-        model.addAttribute("sp",new ChiTietSP());
+    public String update(@PathVariable Long id, @ModelAttribute("chitietsp") ChiTietSP chiTietSp, Model model) {
+        model.addAttribute("sp", new ChiTietSP());
         chiTietSp.setId(id);
         repository.save(chiTietSp);
         return "redirect:/chitietsp/hien-thi";

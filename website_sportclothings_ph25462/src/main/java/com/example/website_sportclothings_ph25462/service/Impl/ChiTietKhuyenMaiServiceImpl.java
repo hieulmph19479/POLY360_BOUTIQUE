@@ -53,9 +53,9 @@ public class ChiTietKhuyenMaiServiceImpl implements ChiTietKhuyenMaiService {
     public ChiTietKhuyenMai add(ChiTietKhuyenMai chiTietKhuyenMai) {
         chiTietKhuyenMaiRepository.save(chiTietKhuyenMai);
         Optional<KhuyenMai> khuyenMaiOptional = khuyenMaiRepository.findById(chiTietKhuyenMai.getKhuyenMai().getId());
+        Integer trangThai = Math.toIntExact(khuyenMaiOptional.get().getTrangThai());
         if (khuyenMaiOptional.isPresent()) {
             KhuyenMai khuyenMai = khuyenMaiOptional.get();
-            Integer trangThai = Math.toIntExact(khuyenMai.getTrangThai());
             if (trangThai != null && trangThai == 1) {
                 for (ChiTietKhuyenMai ctkm : khuyenMai.getChiTietKhuyenMaiList()) {
                     Optional<ChiTietSP> chiTietSPOptional = chiTietSPRepository.findById(ctkm.getChiTietSP().getId());
